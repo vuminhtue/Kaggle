@@ -12,7 +12,7 @@ out1 <- data.frame(dfsp500$Symbol,dfsp500$Name,dfsp500$Sector,dfsp500$Price,
                      dfft500$Name[ind1],dfft500$Revenue[ind1])
 write.csv(out1,"output/adist.csv",row.names = FALSE)
 
-# Other 
+# Other library using different distance computation
 library(fuzzyjoin)
 library(dplyr)
 out2 <- stringdist_join(dfsp500,dfft500,
