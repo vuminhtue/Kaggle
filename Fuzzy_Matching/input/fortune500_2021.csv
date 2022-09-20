@@ -1,0 +1,501 @@
+Year,Name,Revenue,Rank
+2021,Walmart,559151,1
+2021,Amazon,386064,2
+2021,Apple,274515,3
+2021,CVS,268706,4
+2021,UnitedHealth Group,257141,5
+2021,Berkshire Hathaway,245510,6
+2021,McKesson,231051,7
+2021,AmerisourceBergen,189893.9,8
+2021,Alphabet,182527,9
+2021,Exxon Mobil,181502,10
+2021,AT&T,171760,11
+2021,Costco,166761,12
+2021,Cigna,160401,13
+2021,Cardinal Health,152922,14
+2021,Microsoft,143015,15
+2021,Walgreens,139537,16
+2021,Kroger,132498,17
+2021,Home Depot,132110,18
+2021,J.P. Morgan,129503,19
+2021,Verizon,128292,20
+2021,Ford Motor,127144,21
+2021,General Motors,122485,22
+2021,Anthem,121867,23
+2021,Centene,111115,24
+2021,Fannie Mae,106437,25
+2021,Comcast,103564,26
+2021,Chevron,94692,27
+2021,Dell,94224,28
+2021,Bank of America,93753,29
+2021,Target,93561,30
+2021,Lowe's,89597,31
+2021,Marathon,88952,32
+2021,Citigroup,88839,33
+2021,Facebook,85965,34
+2021,United Parcel Service,84628,35
+2021,Johnson & Johnson,82584,36
+2021,Wells Fargo,80303,37
+2021,General Electric,79619,38
+2021,State Farm Insurance,78898,39
+2021,Intel,77867,40
+2021,Humana,77155,41
+2021,IBM,73620,42
+2021,Procter & Gamble,70950,43
+2021,PepsiCo,70372,44
+2021,FedEx,69217,45
+2021,MetLife,67842,46
+2021,Freddie Mac,66228,47
+2021,Phillips 66,65494,48
+2021,Lockheed Martin,65398,49
+2021,Walt Disney,65388,50
+2021,Archer Daniels Midland,64355,51
+2021,Albertsons,62455.1,52
+2021,Valero Energy,60115,53
+2021,Boeing,58158,54
+2021,Prudential Financial,57033,55
+2021,Hewlett-Packard,56639,56
+2021,Raytheon,56587,57
+2021,StoneX,54139.6,58
+2021,Goldman Sachs Group,53498,59
+2021,Sysco,52893.3,60
+2021,Morgan Stanley,52047,61
+2021,HCA,51533,62
+2021,Cisco Systems,49301,63
+2021,Charter,48097,64
+2021,Merck,47994,65
+2021,Best Buy,47262,66
+2021,New York Life Insurance,46712.4,67
+2021,AbbVie,45804,68
+2021,Publix Super Markets,45204,69
+2021,Allstate,44791,70
+2021,Liberty Mutual,43796,71
+2021,AIG,43736,72
+2021,Tyson Foods,43185,73
+2021,Progressive,42658.1,74
+2021,Bristol-Myers Squibb,42518,75
+2021,Nationwide,41929.8,76
+2021,Pfizer,41908,77
+2021,Caterpillar,41748,78
+2021,TIAA,41619.3,79
+2021,Oracle,39068,80
+2021,Energy Transfer,38954,81
+2021,Dow,38542,82
+2021,American Express,38185,83
+2021,General Dynamics,37925,84
+2021,Nike,37403,85
+2021,Northrop Grumman,36799,86
+2021,USAA,36296.2,87
+2021,Deere,35540,88
+2021,Abbott Laboratories,34608,89
+2021,Northwestern Mutual,33782.1,90
+2021,Dollar General,33746.8,91
+2021,Exelon,33039,92
+2021,Coca-Cola,33014,93
+2021,Honeywell International,32637,94
+2021,Thermo Fisher Scientific,32218,95
+2021,3M,32184,96
+2021,TJX,32137,97
+2021,Travelers,31981,98
+2021,Capital One,31643,99
+2021,Tesla,31536,100
+2021,Philip Morris International,28694,101
+2021,Arrow Electronics,28673.4,102
+2021,CHS,28406.4,103
+2021,Jabil,27266.4,104
+2021,Enterprise Products,27199.7,105
+2021,Hewlett Packard Enterprise,26982,106
+2021,United Natural Foods,26742.8,107
+2021,Mondelez International,26581,108
+2021,Viacom,26186,109
+2021,Kraft Heinz,26185,110
+2021,Dollar Tree,25509.3,111
+2021,Amgen,25424,112
+2021,U.S. Bancorp,25241,113
+2021,Performance Food Group,25086.3,114
+2021,Netflix,24996.1,115
+2021,Gilead Sciences,24689,116
+2021,Synnex,24675.6,117
+2021,Eli Lilly,24539.8,118
+2021,Truist Financial,24427,119
+2021,PNC Financial Services,24039,120
+2021,Broadcom,23888,121
+2021,CB Richard Ellis,23826.2,122
+2021,Massachusetts Mutual,23663.1,123
+2021,Qualcomm,23531,124
+2021,Starbucks,23518,125
+2021,Duke Energy,23453,126
+2021,Plains GP Holdings,23290,127
+2021,US Foods,22885,128
+2021,Lennar,22488.9,129
+2021,Danaher,22284,130
+2021,Aflac,22147,131
+2021,Rite Aid,21928.4,132
+2021,Visa,21846,133
+2021,PayPal,21454,134
+2021,Micron Technology,21435,135
+2021,CarMax,21424.1,136
+2021,Salesforce,21252,137
+2021,Altria Group,20841,138
+2021,Lumen Technologies,20712,139
+2021,Baker Hughes,20705,140
+2021,International Paper,20580,141
+2021,Hartford Financial Services,20523,142
+2021,Penske Automotive Group,20443.9,143
+2021,DuPont,20397,144
+2021,AutoNation,20390,145
+2021,Southern,20375,146
+2021,World Fuel Services,20358.3,147
+2021,D.R. Horton,20311.1,148
+2021,Nucor,20139.7,149
+2021,Cummins,19811,150
+2021,NGL Energy Partners,19770.9,151
+2021,DXC Technology,19577,152
+2021,Union Pacific,19533,153
+2021,Whirlpool,19456,154
+2021,Molina Healthcare,19423,155
+2021,ConocoPhillips,19256,156
+2021,McDonald's,19207.8,157
+2021,Kimberly-Clark,19140,158
+2021,Paccar,18728.5,159
+2021,PG&E,18469,160
+2021,CDW,18467.5,161
+2021,Sherwin-Williams,18361.7,162
+2021,L3Harris Technologies,18194,163
+2021,Macy's,18097,164
+2021,Manpower,18001,165
+2021,NextEra Energy,17997,166
+2021,Tenet Healthcare,17640,167
+2021,Avnet,17634.3,168
+2021,General Mills,17626.6,169
+2021,WestRock,17578.8,170
+2021,Carrier,17456,171
+2021,Lincoln National,17439,172
+2021,Genuine Parts,17384.4,173
+2021,American Airlines Group,17337,174
+2021,Marsh & McLennan,17224,175
+2021,Applied Materials,17202,176
+2021,Becton Dickinson,17117,177
+2021,Delta Air Lines,17095,178
+2021,Lear,17045.5,179
+2021,Bank of New York Mellon,16940,180
+2021,Emerson Electric,16785,181
+2021,Western Digital,16736,182
+2021,Occidental Petroleum,16680,183
+2021,Nvidia,16675,184
+2021,Cognizant,16652,185
+2021,Jones Lang LaSalle,16589.9,186
+2021,Synchrony Financial,16472,187
+2021,Colgate-Palmolive,16471,188
+2021,AECOM,16390.8,189
+2021,XPO Logistics,16252,190
+2021,CH Robinson,16207.1,191
+2021,BlackRock,16205,192
+2021,Dominion Energy,16128,193
+2021,Rocket Companies,15980.7,194
+2021,Kohl's,15955,195
+2021,Fluor,15884.2,196
+2021,DISH Network,15493.4,197
+2021,BJ's Wholesale Club,15430,198
+2021,Tenneco,15379,199
+2021,United Airlines,15355,200
+2021,Mastercard,15301,201
+2021,Waste Management,15218,202
+2021,PBF Energy,15115.9,203
+2021,American Electric Power,14918.5,204
+2021,Fiserv,14852,205
+2021,Principal Financial,14741.7,206
+2021,Reinsurance Group of America,14596,207
+2021,ADP,14589.8,208
+2021,Stanley Black & Decker,14534.6,209
+2021,Texas Instruments,14461,210
+2021,Halliburton,14445,211
+2021,Stryker,14351,212
+2021,Estee Lauder,14294,213
+2021,Corteva,14217,214
+2021,Freeport-McMoRan,14198,215
+2021,Qurate Retail,14177,216
+2021,Wayfair,14145.2,217
+2021,Laboratory of America,13978.5,218
+2021,Land O'Lakes,13948.9,219
+2021,PPG,13834,220
+2021,Gap,13800,221
+2021,Kellogg,13770,222
+2021,Parker Hannifin,13695.5,223
+2021,Core-Mark,13617.1,224
+2021,Jacobs Engineering Group,13578.2,225
+2021,Edison International,13578,226
+2021,Guardian Life of America,13561.5,227
+2021,Biogen,13444.6,228
+2021,Omnicom,13171.1,229
+2021,Unum Group,13162.1,230
+2021,Lithia Motors,13124.3,231
+2021,American Family Insurance,13074.5,232
+2021,Discover Financial Services,12953,233
+2021,Adobe,12868,234
+2021,Aramark,12829.6,235
+2021,Otis Worldwide,12756,236
+2021,Ecolab,12748.7,237
+2021,AutoZone,12632,238
+2021,Loews,12583,239
+2021,Illinois Tool Works,12574,240
+2021,Fidelity National Information Services,12552,241
+2021,Ross Stores,12531.6,242
+2021,Peter Kiewit Sons,12463,243
+2021,Equitable Holdings,12415,244
+2021,WESCO,12326,245
+2021,Goodyear Tire & Rubber,12321,246
+2021,Fox,12303,247
+2021,Leidos Holdings,12297,248
+2021,Consolidated Edison,12246,249
+2021,DTE Energy,12177,250
+2021,Charles Schwab,12109,251
+2021,State Street,12078,252
+2021,Ameriprise Financial,11958,253
+2021,Viatris,11946,254
+2021,Sempra Energy,11940,255
+2021,Farmers Insurance Exchange,11869.7,256
+2021,Bath & Body Works,11846.9,257
+2021,W.W. Grainger,11797,258
+2021,Community Health Systems,11789,259
+2021,Ball,11781,260
+2021,Berry Global Group,11709,261
+2021,Kinder Morgan,11700,262
+2021,VF,11688.1,263
+2021,Baxter International,11673,264
+2021,Textron,11651,265
+2021,LKQ,11628.8,266
+2021,Keurig Dr Pepper,11618,267
+2021,O'Reilly Automotive,11604.5,268
+2021,Crown Holdings,11575,269
+2021,Universal Health Services,11558.9,270
+2021,DaVita,11550.6,271
+2021,Xcel Energy,11526,272
+2021,Newmont,11497,273
+2021,Vistra Energy,11443,274
+2021,IQVIA Holdings,11359,275
+2021,eBay,11351,276
+2021,Corning,11303,277
+2021,Quanta Services,11202.7,278
+2021,HollyFrontier,11183.6,279
+2021,Bed Bath & Beyond,11158.6,280
+2021,Uber Technologies,11139,281
+2021,Mutual of Omaha,11098.4,282
+2021,Conagra Brands,11054.4,283
+2021,PulteGroup,11036.1,284
+2021,EOG Resources,11032,285
+2021,Group 1 Automotive,10851.8,286
+2021,Ally Financial,10780,287
+2021,Fidelity National Financial,10778,288
+2021,Nordstrom,10715,289
+2021,Discovery,10671,290
+2021,Tractor Supply,10620.4,291
+2021,CSX,10583,292
+2021,Marriott International,10571,293
+2021,FirstEnergy,10435,294
+2021,BorgWarner,10165,295
+2021,Edward Jones (Jones Financial Companies),10165,295
+2021,Republic Services,10153.6,297
+2021,Henry Schein,10119.1,298
+2021,Expeditors International of Washington,10116.5,299
+2021,Entergy,10113.6,300
+2021,Advance Auto Parts,10106.3,301
+2021,Assurant,10094.8,302
+2021,Pacific Life,10062,303
+2021,Lam Research,10044.7,304
+2021,Boston Scientific,9913,305
+2021,Altice USA,9894.6,306
+2021,Norfolk Southern,9789,307
+2021,Sonic Automotive,9767,308
+2021,AMD,9763,309
+2021,United States Steel,9741,310
+2021,Markel,9735.1,311
+2021,ODP,9710,312
+2021,AES,9660,313
+2021,Molson Coors,9654,314
+2021,J.B. Hunt,9636.6,315
+2021,KKR,9629.7,316
+2021,Hormel Foods,9608.5,317
+2021,Public Service Enterprise Group,9603,318
+2021,Steel Dynamics,9601.5,319
+2021,Dick's Sporting Goods,9584,320
+2021,Mohawk,9552.2,321
+2021,Murphy USA,9504.3,322
+2021,Square,9497.6,323
+2021,Quest Diagnostics,9437,324
+2021,Newell Brands,9385,325
+2021,Liberty Media,9363,326
+2021,Huntington Ingalls,9361,327
+2021,Cheniere Energy,9358,328
+2021,SpartanNash,9348.5,329
+2021,Alcoa,9286,330
+2021,AGCO,9149.7,331
+2021,Voya Financial,9133,332
+2021,NRG Energy,9093,333
+2021,Interpublic Group,9061,334
+2021,Campbell Soup,9050,335
+2021,Southwest Airlines,9048,336
+2021,News,9008,337
+2021,Eversource Energy,8904.4,338
+2021,Alleghany,8896.7,339
+2021,Air Products & Chemicals,8856.3,340
+2021,Auto-Owners Insurance,8853.2,341
+2021,CenterPoint Energy,8835,342
+2021,Reliance Steel & Aluminum,8811.9,343
+2021,EMCOR Group,8797.1,344
+2021,Owens & Minor,8706.9,345
+2021,Mosaic,8681.7,346
+2021,Erie Insurance Group,8666,347
+2021,Genworth Financial,8658,348
+2021,Amphenol,8598.9,349
+2021,Builders FirstSource,8558.9,350
+2021,Oneok,8542.2,351
+2021,United Rentals,8530,352
+2021,Brighthouse Financial,8503,353
+2021,Regeneron Pharmaceuticals,8497.1,354
+2021,Eastman Chemical,8473,355
+2021,CommScope Holding,8435.9,356
+2021,Ryder System,8420.1,357
+2021,Fifth Third Bancorp,8402,358
+2021,Constellation Brands,8343.5,359
+2021,Insight Enterprises,8340.6,360
+2021,Global Partners,8321.6,361
+2021,Univar Solutions,8265,362
+2021,Yum China Holdings,8263,363
+2021,Targa Resources,8260.3,364
+2021,Intercontinental Exchange,8244,365
+2021,Andersons,8208.4,366
+2021,Raymond James Financial,8168,367
+2021,Thor,8167.9,368
+2021,Thrivent Financial for Lutherans,8152.7,369
+2021,Hershey,8149.7,370
+2021,Casey's General Stores,8112.3,371
+2021,W.R. Berkley,8098.9,372
+2021,Activision Blizzard,8086,373
+2021,Western & Southern Financial Group,8057.9,374
+2021,American Tower,8041.5,375
+2021,American Financial Group,7909,376
+2021,Darden Restaurants,7806.9,377
+2021,J.M. Smucker,7801,378
+2021,Williams,7719,379
+2021,Intuit,7679,380
+2021,Citizens Financial Group,7676,381
+2021,PPL,7607,382
+2021,NVR,7566,383
+2021,Westinghouse Air Brake,7556.1,384
+2021,Foot Locker,7548,385
+2021,Cincinnati Financial,7536.3,386
+2021,Weyerhaeuser,7532,387
+2021,Westlake Chemical,7504,388
+2021,Navistar International,7503,389
+2021,Magellan Health,7501.5,390
+2021,Booz Allen Hamilton,7463.8,391
+2021,Autoliv,7447.4,392
+2021,S&P Global,7442,393
+2021,Global Payments,7423.6,394
+2021,Motorola,7414,395
+2021,KeyCorp,7337,396
+2021,Delek US Holdings,7301.8,397
+2021,Masco,7289,398
+2021,Graybar Electric,7265.7,399
+2021,WEC Energy Group,7241.7,400
+2021,Old Republic International,7166,401
+2021,Frontier Communications,7155,402
+2021,Chewy,7146.3,403
+2021,PVH,7132.6,404
+2021,Asbury,7131.8,405
+2021,Seaboard,7126,406
+2021,Polaris,7108.3,407
+2021,Dana,7106,408
+2021,First American,7086.7,409
+2021,Cintas,7085.1,410
+2021,Toll Brothers,7077.7,411
+2021,Science Applications International,7056,412
+2021,Owens Corning,7055,413
+2021,Zimmer Biomet Holdings,7024.5,414
+2021,Xerox,7022,415
+2021,Arthur J. Gallagher,7003.6,416
+2021,Avery Dennison,6971.5,417
+2021,Sanmina,6960.4,418
+2021,Jefferies Financial Group,6955.9,419
+2021,Beacon Roofing Supply,6943.9,420
+2021,Securian Financial Group,6870.4,421
+2021,Oshkosh,6856.8,422
+2021,FM Global,6798,423
+2021,Booking Holdings,6796,424
+2021,Williams-Sonoma,6783.2,425
+2021,Coty,6737.9,426
+2021,Clorox,6721,427
+2021,Pioneer Natural Resources,6685,428
+2021,Dover,6683.8,429
+2021,CMS Energy,6680,430
+2021,Zoetis,6675,431
+2021,Hanes,6664.4,432
+2021,Packaging of America,6658.2,433
+2021,Regions Financial,6655,434
+2021,Graphic Packaging Holding,6559.9,435
+2021,UGI,6559,436
+2021,Sprouts Farmers Market,6468.8,437
+2021,Avantor,6393.6,438
+2021,Veritiv,6345.6,439
+2021,Rockwell Automation,6329.8,440
+2021,MasTec,6321,441
+2021,DCP Midstream,6302,442
+2021,Northern Trust,6301.1,443
+2021,M&T Bank,6281.2,444
+2021,Realogy Holdings,6221,445
+2021,NCR,6207,446
+2021,T. Rowe Price,6206.7,447
+2021,Vertex Pharmaceuticals,6205.7,448
+2021,Big Lots,6199.2,449
+2021,Ralph Lauren,6159.8,450
+2021,Ulta Beauty,6152,451
+2021,Taylor Morrison Home,6129.3,452
+2021,Icahn Enterprises,6123,453
+2021,Blackstone Group,6101.9,454
+2021,O-I Glass,6091,455
+2021,Fortune Brands,6090.3,456
+2021,NOV,6090,457
+2021,Ovintiv,6087,458
+2021,Alexion Pharmaceuticals,6069.9,459
+2021,Huntsman,6025,460
+2021,Equinix,5998.5,461
+2021,ABM,5987.6,462
+2021,Ingredion,5987,463
+2021,Chipotle Mexican Grill,5984.6,464
+2021,Sinclair Broadcast Group,5943,465
+2021,LPL Financial Holdings,5871.6,466
+2021,Crown Castle International,5840,467
+2021,KLA,5806.4,468
+2021,Ameren,5794,469
+2021,KBR,5767,470
+2021,Burlington Stores,5764,471
+2021,Olin,5758,472
+2021,CACI International,5720,473
+2021,Post Holdings,5698.7,474
+2021,Academy Sports and Outdoors,5689.2,475
+2021,Arconic,5675,476
+2021,Celanese,5655,477
+2021,Yum Brands,5652,478
+2021,Fastenal,5647.3,479
+2021,Nasdaq,5627,480
+2021,Analog Devices,5603.1,481
+2021,McCormick,5601.3,482
+2021,Carvana,5586.6,483
+2021,Franklin Resources,5566.5,484
+2021,Electronic Arts,5537,485
+2021,MDU Resources Group,5532.8,486
+2021,Select Medical Holdings,5531.7,487
+2021,Roper,5527.1,488
+2021,RPM International,5507,489
+2021,Cerner,5505.8,490
+2021,Patterson,5490,491
+2021,Commercial Metals,5476.5,492
+2021,Boise Cascade Holdings L.L.C.,5474.8,493
+2021,Hasbro,5465.4,494
+2021,A-Mark Precious Metals,5461.1,495
+2021,Camping World Holdings,5446.6,496
+2021,NetApp,5412,497
+2021,Avis Budget Group,5402,498
+2021,R.R. Donnelley & Sons,5398.8,499
+2021,Moody's,5371,500
