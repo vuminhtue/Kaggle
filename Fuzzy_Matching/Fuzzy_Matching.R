@@ -1,5 +1,5 @@
 rm(list=ls())
-setwd('/work/tuev/FuzzyMatching/')
+setwd('/work/users/tuev/FuzzyMatching/')
 dfsp500 <- read.csv("input/SP500.csv")
 dfft500 <- read.csv("input/Fortune500_2021.csv")
 head(dfsp500)
