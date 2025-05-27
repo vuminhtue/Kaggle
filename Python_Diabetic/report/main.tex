@@ -1,16 +1,20 @@
+% Diabetic Data Analysis and Modeling
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{graphicx}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{natbib}
-\usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{xcolor}
 \usepackage{geometry}
 \geometry{margin=1in}
 
-\title{Diabetic Data Analysis}
+\title{\textbf{MSDS 7335 - Case Study 2: \\ Analysis and Modeling of Diabetic Data}}
 \author{Tue Vu}
 \date{\today}
 
@@ -18,10 +22,17 @@
 
 \maketitle
 \tableofcontents
-\listoffigures
-\listoftables
 
-\include{Chapter1}
-\include{Chapter2}
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\chapter{Exploratory Data Analysis}
+\input{chapters/eda}
+
+\chapter{Modeling with Logistic Regression}
+\input{chapters/modeling}
+
+\chapter{Conclusions}
+\input{chapters/conclusions}
 
 \end{document} 

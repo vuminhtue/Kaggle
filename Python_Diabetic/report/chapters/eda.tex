@@ -1,0 +1,157 @@
+\section{Data Overview and Preprocessing}
+
+The exploratory data analysis began with an examination of the dataset structure and composition. The diabetic dataset comprises 101,766 patient encounters with 50 variables. The distribution of the target variable "readmitted" reveals that 54,864 (53.9\%) patients were not readmitted, 35,545 (34.9\%) were readmitted after 30 days, and 11,357 (11.2\%) were readmitted within 30 days.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../figures/readmission_distribution.pdf}
+    \caption{Distribution of patient readmission categories}
+    \label{fig:readmission_dist}
+\end{figure}
+
+Initial preprocessing steps included:
+\begin{itemize}
+    \item Removal of identifier variables (encounter\_id and patient\_nbr)
+    \item Replacement of "?" placeholders with NaN values for proper missing value handling
+    \item Conversion of age ranges to midpoint values (e.g., [0-10) to 5, [10-20) to 15)
+\end{itemize}
+
+\section{Missing Value Analysis and Imputation}
+
+A critical aspect of the preprocessing phase involved identifying and addressing missing values within the dataset. Nine variables exhibited missing values, with "weight" showing the highest proportion at 96.9\%, followed by "medical\_specialty" at 49.1\%.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/missing_values_percentage.pdf}
+    \caption{Percentage of missing values by variable}
+    \label{fig:missing_values}
+\end{figure}
+
+The following imputation strategies were implemented:
+\begin{itemize}
+    \item The "weight" variable was dropped due to its extremely high percentage of missing values (96.9\%)
+    \item Categorical variables with missing values, including "max\_glu\_serum", "A1Cresult", and "medical\_specialty", were imputed with the value "None"
+    \item For categorical variables, categories with less than 1\% occurrence were merged into a new "Rest" category to reduce dimensionality and prevent overfitting
+\end{itemize}
+
+\section{Categorical Variable Analysis}
+
+The dataset contains numerous categorical variables representing patient demographics, diagnoses, medications, and hospital admission details. Categorical variables were categorized into two groups based on their distribution patterns and relationship with the target variable.
+
+\subsection{Key Categorical Variables}
+
+Based on distribution analysis and correlation with the target variable, the following categorical variables were identified as significant:
+\begin{itemize}
+    \item Demographics: race, gender, payer\_code
+    \item Medical details: max\_glu\_serum, A1Cresult, medical\_specialty
+    \item Medications: metformin, glimepiride, glipizide, glyburide, pioglitazone, rosiglitazone, insulin
+    \item Treatment process: change, diabetesMed, diag
+    \item Hospital factors: admission\_type\_id, discharge\_disposition\_id, admission\_source\_id
+\end{itemize}
+
+Notable findings include:
+\begin{itemize}
+    \item Race: Over 70\% of patients are Caucasian, with distinct readmission patterns across racial groups
+    \item Admission type: Emergency intake (type 1) accounts for more than 50\% of admissions
+    \item Discharge disposition: Approximately 60\% of patients are discharged to home
+    \item Admission source: Nearly 60\% of admissions originate from emergency rooms, followed by 30\% from physician referrals
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/categorical_variables_grid.pdf}
+    \caption{Distribution of readmission status across key categorical variables}
+    \label{fig:cat_vars_grid}
+\end{figure}
+
+\subsection{Excluded Categorical Variables}
+
+Several medication variables were excluded from further analysis due to extreme skewness that could lead to overfitting:
+\begin{itemize}
+    \item repalinize, nateglinide, chloropropamite, acetohesamide, tolbutamide
+    \item acarbose, miglitol, troglitazone, tolazamide, examide
+    \item citoglipton, gliburide\_metoformin, glipizide\_metoformin
+    \item gplipiride\_glitopetazone, troglitazone, metorformin\_piglitazone
+\end{itemize}
+
+\section{Numerical Variable Analysis}
+
+The numerical variables in the dataset include:
+\begin{itemize}
+    \item time\_in\_hospital: Length of hospital stay
+    \item num\_lab\_procedures: Number of laboratory procedures
+    \item num\_procedures: Number of procedures other than laboratory
+    \item num\_medications: Number of distinct medications
+    \item number\_outpatient: Number of outpatient visits
+    \item number\_emergency: Number of emergency visits
+    \item number\_inpatient: Number of inpatient visits
+    \item number\_diagnoses: Number of diagnoses
+    \item age\_mid: Midpoint of age range
+\end{itemize}
+
+\subsection{Correlation Analysis}
+
+Correlation analysis was conducted to identify potential relationships between numerical variables. The correlation matrix did not reveal high collinearity between the variables, with most correlation coefficients below 0.4.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/correlation_matrix.pdf}
+    \caption{Correlation matrix of numerical variables}
+    \label{fig:corr_matrix}
+\end{figure}
+
+Variance Inflation Factor (VIF) analysis was also performed to detect multicollinearity. Although some potential collinearity was observed between "number\_diagnoses" and "age", the VIF values remained within acceptable ranges, and no variables were removed based on this analysis.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/vif_barplot.pdf}
+    \caption{Variance Inflation Factor for numerical features}
+    \label{fig:vif_barplot}
+\end{figure}
+
+\subsection{Distribution Analysis}
+
+Distribution analysis of numerical variables revealed:
+\begin{itemize}
+    \item Right-skewed distributions for time\_in\_hospital
+    \item Left-skewed distribution for age
+    \item Extreme right-skew for number\_outpatient, number\_emergency, and number\_inpatient, with most values being zero
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/numerical_distributions.pdf}
+    \caption{Distribution of numerical variables}
+    \label{fig:num_dist}
+\end{figure}
+
+Due to the extreme skew in outpatient, emergency, and inpatient visit counts, these variables were transformed into categorical variables:
+\begin{itemize}
+    \item cat\_outpatient: 0 for no visits, 1 for one or more visits
+    \item cat\_emergency: 0 for no visits, 1 for one or more visits
+    \item cat\_inpatient: 0 for no visits, 1 for one visit, 2 for more than one visit
+\end{itemize}
+
+\subsection{Relationship with Target Variable}
+
+Boxplots were used to visualize the relationship between numerical variables and the readmission status. The analysis showed comparable distributions across the three readmission categories, indicating that standardization of numerical variables would be appropriate before integration with categorical features.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/numerical_boxplots.pdf}
+    \caption{Boxplots of numerical variables by readmission status}
+    \label{fig:num_boxplots}
+\end{figure}
+
+\section{Feature Engineering and Preparation for Modeling}
+
+After comprehensive exploratory analysis, the following preprocessing steps were implemented to prepare the data for modeling:
+
+\begin{enumerate}
+    \item Merging of the transformed categorical variables (cat\_outpatient, cat\_emergency, cat\_inpatient) with the selected categorical features
+    \item One-hot encoding of categorical variables, resulting in 193 binary features
+    \item Standardization of remaining numerical variables
+    \item Integration of encoded categorical features with standardized numerical features to form the final feature matrix
+\end{enumerate}
+
+This preprocessing pipeline transformed the original dataset with 50 variables into a modeling-ready matrix while preserving the information content and addressing the identified data quality issues. 
