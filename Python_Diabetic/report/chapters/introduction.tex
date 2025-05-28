@@ -1,6 +1,8 @@
 \section{Background}
 
-Diabetes mellitus represents a significant global health challenge, affecting millions of individuals worldwide and contributing substantially to healthcare expenditure. The condition is characterized by elevated blood glucose levels resulting from defects in insulin production, insulin action, or both. Complications associated with diabetes include cardiovascular disease, nephropathy, retinopathy, and neuropathy, significantly impacting patient quality of life and mortality rates.
+Diabetes represents a significant global health challenge, affecting millions of individuals worldwide and contributing substantially to healthcare expenditure. 
+The condition is characterized by elevated blood glucose levels resulting from defects in insulin production, insulin action, or both. 
+The complications associated with diabetes include cardiovascular disease, nephropathy, retinopathy, and neuropathy, significantly impacting patient quality of life and mortality rates.
 
 Hospital readmissions among diabetic patients constitute a significant burden on healthcare systems, with implications for both quality of care and resource allocation. Readmissions within 30 days of discharge are particularly concerning as they may indicate inadequate initial treatment, premature discharge, or insufficient follow-up care. Understanding the factors associated with readmission patterns is essential for developing effective intervention strategies to improve patient outcomes and reduce healthcare costs.
 
@@ -10,13 +12,13 @@ This analysis utilizes a comprehensive dataset containing records of diabetic pa
 
 Key features in the dataset include:
 \begin{itemize}
-    \item Demographic information (age, race, gender)
-    \item Admission type, source, and discharge disposition
-    \item Primary and secondary diagnoses
-    \item Laboratory tests (HbA1c results, glucose serum levels)
-    \item Medication changes during hospitalization
+    \item Demographic information ('age', 'race', 'gender', 'weight')
+    \item Admission type, source, and discharge disposition ('admission_type_id', 'discharge_disposition_id', 'admission_source_id')
+    \item Primary, secondary, and tertiary diagnoses ('diag_1', 'diag_2', 'diag_3')
+    \item Laboratory tests ('A1Cresults', 'max_glu_serum')
+    \item Medication changes during hospitalization ('num_medications')
     \item Diabetes medications (e.g., insulin, metformin, glyburide)
-    \item Length of hospital stay
+    \item Length of hospital stay ('time_in_hospital')
     \item Number of previous outpatient, inpatient, and emergency visits
 \end{itemize}
 
@@ -26,9 +28,11 @@ The primary objectives of this analysis are to:
 
 \begin{enumerate}
     \item Identify patterns and relationships within the diabetic patient data through comprehensive exploratory data analysis
-    \item Determine the key factors associated with hospital readmission among diabetic patients
+    \item There exits several missing values in the dataset, we need to handle and impute them appropriately
     \item Develop a predictive model using logistic regression with k-fold cross-validation to estimate readmission probabilities
     \item Evaluate the performance of the model and identify the most influential features affecting readmission outcomes
+    \item Determine the key factors associated with hospital readmission among diabetic patients
+
 \end{enumerate}
 
 Through this investigation, we aim to contribute insights that may inform clinical decision-making and intervention strategies to reduce readmission rates among diabetic patients. 

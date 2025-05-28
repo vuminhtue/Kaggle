@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.12)  27 MAY 2025 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.12)  28 MAY 2025 00:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -406,6 +406,157 @@ l.26 \chapter
 ]
 Chapter 1.
 (./chapters/introduction.tex
+./chapters/introduction.tex:16: Missing $ inserted.
+<inserted text> 
+                $
+l.16 ...ce, and discharge disposition ('admission_
+                                                  type_id', 'discharge_dispo...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./chapters/introduction.tex:17: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17     \item
+               Primary, secondary, and tertiary diagnoses ('diag_1', 'diag_2...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/introduction.tex:17: Missing $ inserted.
+<inserted text> 
+                $
+l.17     \item P
+                rimary, secondary, and tertiary diagnoses ('diag_1', 'diag_2...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (159.52776pt too wide) in paragraph at lines 16--17
+[]\T1/cmr/m/n/12 Admission type, source, and dis-charge dis-po-si-tion ('admission$[]\OML/cmm/m/it/12 ype[]d[];[] discharge[]isposition[]d[];[] admission[]ource[]d[]\OT1/cmr/m/n/12 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+./chapters/introduction.tex:17: Missing $ inserted.
+<inserted text> 
+                $
+l.17 ... secondary, and tertiary diagnoses ('diag_
+                                                  1', 'diag_2', 'diag_3')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./chapters/introduction.tex:18: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18     \item
+               Laboratory tests ('A1Cresults', 'max_glu_serum')
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/introduction.tex:18: Missing $ inserted.
+<inserted text> 
+                $
+l.18     \item L
+                aboratory tests ('A1Cresults', 'max_glu_serum')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/introduction.tex:18: Missing $ inserted.
+<inserted text> 
+                $
+l.18 ...item Laboratory tests ('A1Cresults', 'max_
+                                                  glu_serum')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./chapters/introduction.tex:19: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19     \item
+               Medication changes during hospitalization ('num_medications')
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/introduction.tex:19: Missing $ inserted.
+<inserted text> 
+                $
+l.19     \item M
+                edication changes during hospitalization ('num_medications')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/introduction.tex:19: Missing $ inserted.
+<inserted text> 
+                $
+l.19 ...tion changes during hospitalization ('num_
+                                                  medications')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./chapters/introduction.tex:20: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20     \item
+               Diabetes medications (e.g., insulin, metformin, glyburide)
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/introduction.tex:20: Missing $ inserted.
+<inserted text> 
+                $
+l.20     \item D
+                iabetes medications (e.g., insulin, metformin, glyburide)
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./chapters/introduction.tex:21: Missing $ inserted.
+<inserted text> 
+                $
+l.21     \item Length of hospital stay ('time_
+                                              in_hospital')
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./chapters/introduction.tex:22: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22     \item
+               Number of previous outpatient, inpatient, and emergency visits
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./chapters/introduction.tex:22: Missing $ inserted.
+<inserted text> 
+                $
+l.22     \item N
+                umber of previous outpatient, inpatient, and emergency visits
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
 
 [2
 
@@ -414,75 +565,106 @@ Chapter 1.
 [3]
 Chapter 2.
 (./chapters/eda.tex
-<../figures/readmission_distribution.pdf, id=35, 570.59549pt x 425.3378pt>
-File: ../figures/readmission_distribution.pdf Graphic file (type pdf)
-<use ../figures/readmission_distribution.pdf>
-Package pdftex.def Info: ../figures/readmission_distribution.pdf  used on input line 7.
-(pdftex.def)             Requested size: 317.07614pt x 236.35733pt.
+<../figures/readmission_distribution.png, id=41, 455.301pt x 339.669pt>
+File: ../figures/readmission_distribution.png Graphic file (type png)
+<use ../figures/readmission_distribution.png>
+Package pdftex.def Info: ../figures/readmission_distribution.png  used on input line 10.
+(pdftex.def)             Requested size: 317.07614pt x 236.55386pt.
 
 
 [4
 
- <../figures/readmission_distribution.pdf>]
-<../figures/missing_values_percentage.pdf, id=75, 715.10663pt x 425.3682pt>
-File: ../figures/missing_values_percentage.pdf Graphic file (type pdf)
-<use ../figures/missing_values_percentage.pdf>
-Package pdftex.def Info: ../figures/missing_values_percentage.pdf  used on input line 25.
-(pdftex.def)             Requested size: 362.37569pt x 215.5524pt.
+ <../figures/readmission_distribution.png>]
+<../figures/missing_values_percentage.png, id=51, 859.2903pt x 426.393pt>
+File: ../figures/missing_values_percentage.png Graphic file (type png)
+<use ../figures/missing_values_percentage.png>
+Package pdftex.def Info: ../figures/missing_values_percentage.png  used on input line 28.
+(pdftex.def)             Requested size: 362.37569pt x 179.81253pt.
 
-Overfull \hbox (8.69678pt too wide) in paragraph at lines 33--34
-[]\T1/cmr/m/n/12 Categorical vari-ables with miss-ing val-ues, in-clud-ing "max_glu_serum", "A1Cresult",
+Overfull \hbox (24.9385pt too wide) in paragraph at lines 44--45
+[]\T1/cmr/m/n/12 For "age", the miss-ing val-ues were im-puted with the me-dian of the vari-able. ("age_mid") 
  []
 
 
 
-[5 <../figures/missing_values_percentage.pdf>]
-Overfull \hbox (18.4206pt too wide) in paragraph at lines 49--50
-[]\T1/cmr/m/n/12 Hospital fac-tors: ad-mis-sion_type_id, dis-charge_disposition_id, ad-mis-sion_source_id 
+[5 <../figures/missing_values_percentage.png>]
+Overfull \hbox (18.4206pt too wide) in paragraph at lines 60--61
+[]\T1/cmr/m/n/12 Hospital fac-tors: ad-mis-sion_type_id, dis-charge_disposition_id, ad-mis-sion_source_id
  []
 
-<../figures/categorical_variables_grid.pdf, id=122, 1073.74771pt x 714.93503pt>
-File: ../figures/categorical_variables_grid.pdf Graphic file (type pdf)
-<use ../figures/categorical_variables_grid.pdf>
-Package pdftex.def Info: ../figures/categorical_variables_grid.pdf  used on input line 62.
-(pdftex.def)             Requested size: 407.66833pt x 271.43813pt.
+<../figures/cat1.png, id=59, 1073.9322pt x 338.9463pt>
+File: ../figures/cat1.png Graphic file (type png)
+<use ../figures/cat1.png>
+Package pdftex.def Info: ../figures/cat1.png  used on input line 65.
+(pdftex.def)             Requested size: 407.66833pt x 128.66646pt.
+<../figures/cat2.png, id=60, 1076.1003pt x 478.4274pt>
+File: ../figures/cat2.png Graphic file (type png)
+<use ../figures/cat2.png>
+Package pdftex.def Info: ../figures/cat2.png  used on input line 68.
+(pdftex.def)             Requested size: 407.66833pt x 181.24217pt.
+<../figures/cat3.png, id=61, 1076.823pt x 685.8423pt>
+File: ../figures/cat3.png Graphic file (type png)
+<use ../figures/cat3.png>
+Package pdftex.def Info: ../figures/cat3.png  used on input line 71.
+(pdftex.def)             Requested size: 407.66833pt x 259.64952pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figures/cat4.png, id=62, 1076.1003pt x 339.669pt>
+File: ../figures/cat4.png Graphic file (type png)
+<use ../figures/cat4.png>
+Package pdftex.def Info: ../figures/cat4.png  used on input line 77.
+(pdftex.def)             Requested size: 407.66833pt x 128.67647pt.
+<../figures/cat5.png, id=63, 1236.62pt x 396.48125pt>
+File: ../figures/cat5.png Graphic file (type png)
+<use ../figures/cat5.png>
+Package pdftex.def Info: ../figures/cat5.png  used on input line 80.
+(pdftex.def)             Requested size: 407.66833pt x 130.70612pt.
+<../figures/cat6.png, id=64, 1074.6549pt x 408.3255pt>
+File: ../figures/cat6.png Graphic file (type png)
+<use ../figures/cat6.png>
+Package pdftex.def Info: ../figures/cat6.png  used on input line 83.
+(pdftex.def)             Requested size: 407.66833pt x 154.89738pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-[6 <../figures/categorical_variables_grid.pdf>]
-<../figures/correlation_matrix.pdf, id=195, 629.56004pt x 570.61055pt>
+
+[6]
+<../figures/correlation_matrix.pdf, id=74, 629.56004pt x 570.61055pt>
 File: ../figures/correlation_matrix.pdf Graphic file (type pdf)
 <use ../figures/correlation_matrix.pdf>
-Package pdftex.def Info: ../figures/correlation_matrix.pdf  used on input line 98.
+Package pdftex.def Info: ../figures/correlation_matrix.pdf  used on input line 129.
 (pdftex.def)             Requested size: 362.37569pt x 328.45549pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figures/vif_barplot.pdf, id=196, 709.70074pt x 425.34068pt>
+<../figures/vif_barplot.pdf, id=75, 709.70074pt x 425.34068pt>
 File: ../figures/vif_barplot.pdf Graphic file (type pdf)
 <use ../figures/vif_barplot.pdf>
-Package pdftex.def Info: ../figures/vif_barplot.pdf  used on input line 107.
+Package pdftex.def Info: ../figures/vif_barplot.pdf  used on input line 138.
 (pdftex.def)             Requested size: 362.37569pt x 217.18048pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (27.46191pt too wide) in paragraph at lines 118--119
+Overfull \hbox (27.46191pt too wide) in paragraph at lines 149--150
 []\T1/cmr/m/n/12 Extreme right-skew for num-ber_outpatient, num-ber_emergency, and num-ber_inpatient,
  []
 
-<../figures/numerical_distributions.pdf, id=197, 1076.48549pt x 1075.68881pt>
+<../figures/numerical_distributions.pdf, id=76, 1076.48549pt x 1075.68881pt>
 File: ../figures/numerical_distributions.pdf Graphic file (type pdf)
 <use ../figures/numerical_distributions.pdf>
-Package pdftex.def Info: ../figures/numerical_distributions.pdf  used on input line 123.
+Package pdftex.def Info: ../figures/numerical_distributions.pdf  used on input line 154.
 (pdftex.def)             Requested size: 407.66833pt x 407.37083pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figures/numerical_boxplots.pdf, id=198, 1076.3632pt x 1075.76784pt>
+<../figures/numerical_boxplots.pdf, id=77, 1076.3632pt x 1075.76784pt>
 File: ../figures/numerical_boxplots.pdf Graphic file (type pdf)
 <use ../figures/numerical_boxplots.pdf>
-Package pdftex.def Info: ../figures/numerical_boxplots.pdf  used on input line 141.
+Package pdftex.def Info: ../figures/numerical_boxplots.pdf  used on input line 172.
 (pdftex.def)             Requested size: 407.66833pt x 407.4336pt.
 
 
@@ -490,13 +672,32 @@ Package pdftex.def Info: ../figures/numerical_boxplots.pdf  used on input line 1
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<../figures/feature_importance.pdf, id=85, 1293.26411pt x 714.41783pt>
+File: ../figures/feature_importance.pdf Graphic file (type pdf)
+<use ../figures/feature_importance.pdf>
+Package pdftex.def Info: ../figures/feature_importance.pdf  used on input line 196.
+(pdftex.def)             Requested size: 407.66833pt x 225.19542pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (30.49847pt too wide) in paragraph at lines 205--206
+[]\T1/cmr/m/n/12 Clinical fac-tors like num-ber_diagnoses, num-ber_inpatient vis-its, and num-ber_emergency
+ []
+
 )
 
-[8 <../figures/correlation_matrix.pdf>]
+[8]
 
-[9 <../figures/vif_barplot.pdf> <../figures/numerical_distributions.pdf>]
+[9 <../figures/cat1.png> <../figures/cat2.png> <../figures/cat3.png>]
 
-[10 <../figures/numerical_boxplots.pdf>]
+[10 <../figures/cat4.png> <../figures/cat5.png> <../figures/cat6.png>]
+
+[11 <../figures/correlation_matrix.pdf> <../figures/vif_barplot.pdf>]
+
+[12 <../figures/numerical_distributions.pdf>]
+
+[13 <../figures/numerical_boxplots.pdf> <../figures/feature_importance.pdf>]
 Chapter 3.
 (./chapters/modeling.tex
 ./chapters/modeling.tex:14: Extra alignment tab has been changed to \cr.
@@ -528,39 +729,38 @@ So I'll assume that you meant to type \cr instead.
 
 
 
-[11
+[14
 
 ]
 
-[12]
-<../figures/confusion_matrix.pdf, id=435, 542.15475pt x 425.3378pt>
+[15]
+<../figures/confusion_matrix.pdf, id=388, 542.15475pt x 425.3378pt>
 File: ../figures/confusion_matrix.pdf Graphic file (type pdf)
 <use ../figures/confusion_matrix.pdf>
 Package pdftex.def Info: ../figures/confusion_matrix.pdf  used on input line 100.
 (pdftex.def)             Requested size: 317.07614pt x 248.76645pt.
 
 
-[13 <../figures/confusion_matrix.pdf>]
-<../figures/feature_importance.pdf, id=485, 1293.26411pt x 714.41783pt>
+[16 <../figures/confusion_matrix.pdf>]
 File: ../figures/feature_importance.pdf Graphic file (type pdf)
 <use ../figures/feature_importance.pdf>
 Package pdftex.def Info: ../figures/feature_importance.pdf  used on input line 117.
 (pdftex.def)             Requested size: 407.66833pt x 225.19542pt.
 
 
-[14 <../figures/feature_importance.pdf>])
+[17])
 
-[15]
+[18]
 Chapter 4.
 (./chapters/conclusions.tex
 
-[16
+[19
 
 ]
 
-[17])
+[20])
 
-[18] (./main.aux)
+[21] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
@@ -576,21 +776,21 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  E2B23AE85F08A4865BB4F59B5E578B68;5781.
+(rerunfilecheck)             After:  678D8A135586BE58BBC7297BBD10E47F;5977.
  ) 
 Here is how much of TeX's memory you used:
- 12256 strings out of 475290
- 194212 string characters out of 5767851
- 588872 words of memory out of 5000000
- 34892 multiletter control sequences out of 15000+600000
+ 12297 strings out of 475290
+ 194945 string characters out of 5767851
+ 590872 words of memory out of 5000000
+ 34926 multiletter control sequences out of 15000+600000
  573374 words of font info for 76 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,7n,79p,653b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on main.pdf (19 pages, 337427 bytes).
+ </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </Users/a46791130/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/a46791130/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (22 pages, 795549 bytes).
 PDF statistics:
- 940 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 99 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 850 PDF objects out of 1000 (max. 8388607)
+ 260 compressed objects within 3 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

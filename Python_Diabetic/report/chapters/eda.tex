@@ -1,10 +1,13 @@
 \section{Data Overview and Preprocessing}
 
-The exploratory data analysis began with an examination of the dataset structure and composition. The diabetic dataset comprises 101,766 patient encounters with 50 variables. The distribution of the target variable "readmitted" reveals that 54,864 (53.9\%) patients were not readmitted, 35,545 (34.9\%) were readmitted after 30 days, and 11,357 (11.2\%) were readmitted within 30 days.
+The exploratory data analysis began with an examination of the dataset structure and composition. The diabetic dataset comprises 101,766 patient encounters with 50 variables. 
+
+The distribution of the target variable "readmitted" reveals that 54,864 (53.9\%) patients were not readmitted, 35,545 (34.9\%) were readmitted after 30 days, and 11,357 (11.2\%) were readmitted within 30 days (Figure 2.1).
+The target variable is imbalanced, which is a common issue in healthcare datasets.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{../figures/readmission_distribution.pdf}
+    \includegraphics[width=0.7\textwidth]{../figures/readmission_distribution.png}
     \caption{Distribution of patient readmission categories}
     \label{fig:readmission_dist}
 \end{figure}
@@ -13,25 +16,32 @@ Initial preprocessing steps included:
 \begin{itemize}
     \item Removal of identifier variables (encounter\_id and patient\_nbr)
     \item Replacement of "?" placeholders with NaN values for proper missing value handling
-    \item Conversion of age ranges to midpoint values (e.g., [0-10) to 5, [10-20) to 15)
 \end{itemize}
 
 \section{Missing Value Analysis and Imputation}
 
-A critical aspect of the preprocessing phase involved identifying and addressing missing values within the dataset. Nine variables exhibited missing values, with "weight" showing the highest proportion at 96.9\%, followed by "medical\_specialty" at 49.1\%.
+A critical aspect of the preprocessing phase involved identifying and addressing missing values within the dataset. 
+Nine variables exhibited missing values, with "weight" showing the highest proportion at 96.9\%, followed by "max\_glu\_serum" and "A1Cresult" at 94.75\% and 83.28\% respectively.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{../figures/missing_values_percentage.pdf}
+    \includegraphics[width=0.8\textwidth]{../figures/missing_values_percentage.png}
     \caption{Percentage of missing values by variable}
     \label{fig:missing_values}
 \end{figure}
 
 The following imputation strategies were implemented:
 \begin{itemize}
-    \item The "weight" variable was dropped due to its extremely high percentage of missing values (96.9\%)
-    \item Categorical variables with missing values, including "max\_glu\_serum", "A1Cresult", and "medical\_specialty", were imputed with the value "None"
-    \item For categorical variables, categories with less than 1\% occurrence were merged into a new "Rest" category to reduce dimensionality and prevent overfitting
+    \item Althought "weight" is very important factor to identify the diabete condition, however, due to its extremely high percentage of missing values (96.9\%) we dropped this variable.
+    \item Despite its high percentage of missing values, due to small amount of categorical objects, the "max\_glu\_serum", "A1Cresult", and "medical\_specialty", were imputed with the value "None"
+    \item Similar to the above categorical variables, the "payer\_code" and "race" variables were imputed with the value "None
+    \item For diagnosis variables: "diag\_1", "diag\_2", "diag\_3", missing values were imputed with the value "None". Categories with less than 0.5\% occurrence were merged into a new "Rest" category to reduce dimensionality and prevent overfitting. 
+    Due to its importance, the "diag\_1" variable was considered more important than "diag\_2", and "diag\_2" was considered more important than "diag\_3". If a patient has multiple diagnoses, the most important one was selected and put into the "diag" variable.
+    The "Rest" category was created to handle the rare cases and thus has less importance ranking (after diag\_3).
+    The "None" category was created to handle the missing values and has the least importance (after "Rest").
+    This approach was used to handle the overfitting issue and reduce the dimensionality of the dataset.
+    \item For "race", the missing values were imputed with "None", althought it could be algined with "Caucasian" or "AfricanAmerican" categories, due to high median values.
+    \item For "age", the missing values were imputed with the median of the variable. ("age\_mid")
 \end{itemize}
 
 \section{Categorical Variable Analysis}
@@ -42,12 +52,38 @@ The dataset contains numerous categorical variables representing patient demogra
 
 Based on distribution analysis and correlation with the target variable, the following categorical variables were identified as significant:
 \begin{itemize}
-    \item Demographics: race, gender, payer\_code
-    \item Medical details: max\_glu\_serum, A1Cresult, medical\_specialty
-    \item Medications: metformin, glimepiride, glipizide, glyburide, pioglitazone, rosiglitazone, insulin
-    \item Treatment process: change, diabetesMed, diag
-    \item Hospital factors: admission\_type\_id, discharge\_disposition\_id, admission\_source\_id
+    \item Demographics: race, gender, payer\_code (Figure 2.3)
+    \item Medical details: max\_glu\_serum, A1Cresult, medical\_specialty (Figure 2.4)
+    \item Medications: metformin, glimepiride, glipizide, glyburide, pioglitazone, rosiglitazone (Figure 2.5)
+    \item Treatment process: insulin,change, diabetesMed (Figure 2.6)
+    \item Diagnosis: diag (Figure 2.7)
+    \item Hospital factors: admission\_type\_id, discharge\_disposition\_id, admission\_source\_id (Figure 2.8)
 \end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/cat1.png}
+    \caption{Distribution of readmission status across Demographics}
+
+    \includegraphics[width=0.9\textwidth]{../figures/cat2.png}
+    \caption{Distribution of readmission status across Medical details}
+
+    \includegraphics[width=0.9\textwidth]{../figures/cat3.png}
+    \caption{Distribution of readmission status across Medications}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/cat4.png}
+    \caption{Distribution of readmission status across Treatment process}
+
+    \includegraphics[width=0.9\textwidth]{../figures/cat5.png}
+    \caption{Distribution of readmission status across Dignosis code}
+
+    \includegraphics[width=0.9\textwidth]{../figures/cat6.png}
+    \caption{Distribution of readmission status across Hospital factors}
+    
+\end{figure}
 
 Notable findings include:
 \begin{itemize}
@@ -57,12 +93,7 @@ Notable findings include:
     \item Admission source: Nearly 60\% of admissions originate from emergency rooms, followed by 30\% from physician referrals
 \end{itemize}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.9\textwidth]{../figures/categorical_variables_grid.pdf}
-    \caption{Distribution of readmission status across key categorical variables}
-    \label{fig:cat_vars_grid}
-\end{figure}
+
 
 \subsection{Excluded Categorical Variables}
 
@@ -154,4 +185,25 @@ After comprehensive exploratory analysis, the following preprocessing steps were
     \item Integration of encoded categorical features with standardized numerical features to form the final feature matrix
 \end{enumerate}
 
-This preprocessing pipeline transformed the original dataset with 50 variables into a modeling-ready matrix while preserving the information content and addressing the identified data quality issues. 
+This preprocessing pipeline transformed the original dataset with 50 variables into a modeling-ready matrix while preserving the information content and addressing the identified data quality issues.
+
+\section{Feature Importance Analysis}
+
+To gain deeper insights into the predictive power of individual features, a Random Forest classifier was trained on the preprocessed data. Feature importance scores were extracted to identify the most influential variables in predicting hospital readmission.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../figures/feature_importance.pdf}
+    \caption{Top 20 most important features based on Random Forest feature importance}
+    \label{fig:feature_importance}
+\end{figure}
+
+The analysis revealed several key insights:
+\begin{itemize}
+    \item Hospital-related factors such as discharge\_disposition\_id and time\_in\_hospital emerged as the most important predictors of readmission
+    \item Patient demographics including age and race also showed significant influence on readmission risk
+    \item Clinical factors like number\_diagnoses, number\_inpatient visits, and number\_emergency visits were strong predictors
+    \item Among medication variables, insulin treatment demonstrated the highest importance, supporting existing literature on the relationship between insulin therapy and readmission risk
+\end{itemize}
+
+These findings provide valuable insights for healthcare providers to identify high-risk patients and develop targeted interventions to reduce readmission rates. The prominence of hospital-related factors suggests that improvements in discharge planning and post-discharge follow-up could be effective strategies for reducing readmissions. 
