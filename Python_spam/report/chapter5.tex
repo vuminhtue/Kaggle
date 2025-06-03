@@ -1,0 +1,22 @@
+\chapter{Discussions \& Conclusions}
+
+\section{Discussions}
+This investigation has addressed the development of a machine learning approach for discriminating between legitimate and unsolicited email communications. The primary contributions of this work include:
+development of a robust methodology for extracting and normalizing email content from diverse formats, 
+identification of discriminative lexical features between spam and legitimate communications, 
+implementation and evaluation of a Naive Bayes classification model for automated filtering and 
+analysis of model performance characteristics and limitations
+
+The Naive Bayes classification model demonstrated strong performance in the spam classification task and resulted in Cross-validation accuracy averaged 98.2\%, Test set performance achieved 98\% accuracy, Precision for spam identification reached 97\% and Recall for spam identification reached 96\%.
+These performance metrics suggest that the model is viable for real-world spam filtering applications, particularly in environments where high recall is prioritized to minimize exposure to potentially harmful communications.
+
+Several limitations constrain the generalizability of the current investigation with potential temporal bias in collected communications, 
+limited representation of certain communication types and 
+absence of non-English content for multilingual evaluation
+
+\section{Conclusions}
+This investigation has demonstrated that Naive Bayes classification, coupled with appropriate text preprocessing and TF-IDF vectorization, provides effective discrimination between spam and legitimate email communications. The approach achieves high accuracy while maintaining computational efficiency suitable for practical applications.
+
+The analysis of discriminative features revealed that specific lexical patterns serve as reliable indicators of message legitimacy, reinforcing theoretical understanding of linguistic differences between solicited and unsolicited communications. However, the identified limitations in feature representation and model assumptions suggest opportunities for enhancement through more sophisticated approaches.
+
+Future research directions, particularly in semantic feature engineering and deep learning approaches, offer substantial potential for advancing the state of the art in automated email filtering. These advancements could significantly enhance information security, productivity, and communication reliability in digital environments. 

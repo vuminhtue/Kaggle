@@ -1,81 +1,25 @@
-\section{Model Selection}
-
 Logistic regression was selected as the primary modeling approach for this analysis due to its interpretability, statistical robustness, and suitability for classification problems. As a parametric model, logistic regression provides clear insights into the relationship between predictors and the probability of hospital readmission, facilitating clinical interpretation and decision-making.
 
 For this multiclass classification problem with three readmission categories ("NO", ">30", "<30"), we employed a multinomial logistic regression approach. This extension of the binary logistic model allows for the prediction of probabilities across multiple classes.
 
-\section{Data Partitioning}
+Prior to model training, the preprocessed dataset was partitioned into training and testing sets using a stratified random sampling approach to maintain the class distribution of the target variable. The data was split with 80\% allocated to the training set and 20\% to the testing set.
 
-Prior to model training, the preprocessed dataset was partitioned into training and testing sets using a stratified random sampling approach to maintain the class distribution of the target variable. The data was split with 80\% allocated to the training set and 20\% to the testing set (Table~\ref{tab:readmission-split}).
-
-\begin{table}[htbp]
-\centering
-\caption{Dataset Split by Readmission Category}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Subset} & \textbf{Size} & \textbf{NO} & \textbf{$>$30} & \textbf{$<$30} \\
-\midrule
-Training & 81,413 & 43,891 (53.9\%) & 28,436 (34.9\%) & 9,086 (11.2\%) \\
-Testing  & 20,353 & 10,973 (53.9\%) & 7,109 (34.9\%)  & 2,271 (11.2\%) \\
-\bottomrule
-\end{tabular}
-\label{tab:readmission-split}
-\end{table}
-
-\section{K-Fold Cross-Validation}
-
-To ensure robust model evaluation and mitigate the risk of overfitting, K-fold cross-validation was implemented with $K=10$. This procedure involved:
-
-\begin{enumerate}
-    \item Partitioning the training data into 10 equal-sized folds
-    \item Training the model on 9 folds and validating on the remaining fold
-    \item Rotating through all folds as the validation set
-    \item Averaging performance metrics across all iterations
-    \item The entire process was executed via LogisticRegressionCV function in scikit-learn
-\end{enumerate}
-
+To ensure robust model evaluation and mitigate the risk of overfitting, we applied 10-Fold cross-validation for the model training with LogisticRegressionCV in scikit-learn.
 Cross-validation provides a more reliable estimate of model performance by evaluating it on multiple subsets of the data, reducing the impact of sampling variability on performance assessment and also to avoid overfitting.
 Figure~\ref{fig:cv} shows the optimal regularization strength for each class and this regularization strength was used for the final model.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../figures/cv.png}
     \caption{Confusion matrix for the logistic regression model on the test set}
     \label{fig:cv}
 \end{figure}
 
-\section{Model Training}
+Once identified the optimal Regularization strength C from LogisticRegressionCV, the logistic regression model was trained using the scikit-learn implementation with lbfgs solver, 1000 maximum iterations, multinomial multi-class strategy and accuracy scoring with all available cpus.
 
-The logistic regression model was trained using the scikit-learn implementation with the following hyperparameters:
-\begin{itemize}
-    \item Regularization strength (C): was found from the cross-validation results
-    \item Penalty: L2 (Ridge regression)
-    \item Solver: lbfgs (Limited-memory Broyden–Fletcher–Goldfarb–Shanno algorithm)
-    \item Multi-class strategy: multinomial
-    \item Maximum iterations: 1000
-    \item scoring: accuracy
-    \item n\_jobs: -1 (use all available CPU cores)
-\end{itemize}
+The model was evaluated on both the cross-validation folds and the held-out test set using multiple performance metrics including: Accuracy, F1-score, Confusion Matrix, and Classification Report.
 
-Prior to training, numerical features were standardized using StandardScaler() to have zero mean and unit variance, ensuring that features with larger scales did not disproportionately influence the model coefficients.
-
-\section{Model Evaluation}
-
-The model was evaluated on both the cross-validation folds and the held-out test set using multiple performance metrics to provide a comprehensive assessment of its predictive capabilities.
-
-\subsection{Performance Metrics}
-
-The following metrics were used to evaluate model performance:
-\begin{itemize}
-    \item Accuracy: The proportion of correct predictions across all classes
-    \item F1-score: The harmonic mean of precision and recall, calculated for each class and averaged. f1-score is particularly useful when dealing with imbalanced datasets as in this case.
-    \item Confusion Matrix: A tabulation of true vs. predicted classes, revealing class-specific performance
-    \item Classification Report: A comprehensive summary including precision, recall, and F1-score for each class
-\end{itemize}
-
-\subsection{Test Set Results}
-
-The model's performance on the held-out test set in Table~\ref{tab:test-set-results} and Figure~\ref{fig:confusion_matrix}:
+The model's classification report on the held-out test set in Table~\ref{tab:test-set-results} and confusion matrix in Figure~\ref{fig:confusion_matrix}:
 
 \begin{center}
 \caption{Test Set Results}
@@ -97,11 +41,13 @@ Accuracy & \multicolumn{3}{c}{0.58} \\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{../figures/cm.png}
-    \caption{Confusion matrix for the logistic regression model on the test set}
+    \caption{Confusion matrix for the logistic regression model}
     \label{fig:confusion_matrix}
 \end{figure}
 
-The model demonstrates stronger performance in identifying patients who will not be readmitted ("NO" class) compared to those who will be readmitted. The more challenging class to predict is readmission within 30 days ("<30"), which has the lowest recall and F1-score. This is likely due to the class imbalance in the dataset, where the "<30" class represents only 11.2\% of the observations.
+The model demonstrates stronger performance in identifying patients in "NO" class compared to those who will be readmitted.
+The more challenging class to predict is readmission within 30 days ("<30"), which has the lowest recall and F1-score. 
+This is likely due to the class imbalance in the dataset, where the "<30" class represents only 11.2\% of the observations.
 
 The ROC curves on the other hand indicate better AUC score for all 3 classes is shown in Figure~\ref{fig:roc_curve}:
 
@@ -112,13 +58,8 @@ The ROC curves on the other hand indicate better AUC score for all 3 classes is 
     \label{fig:roc_curve}
 \end{figure}
 
-\section{Feature Importance Analysis}
-
-A key advantage of logistic regression is the interpretability of model coefficients, which provide insights into the relative importance of features in predicting readmission probabilities.
-
-\subsection{Coefficient Interpretation from Logistic Regression}
-
-For multinomial logistic regression, the model produces a set of coefficients for each class (except the reference class). The magnitude and direction of these coefficients indicate the strength and nature of the relationship between each feature and the log-odds of belonging to a particular class (Figure~\ref{fig:feature_importance}).
+For multinomial logistic regression, the model produces a set of coefficients for each class.
+The magnitude and direction of these coefficients indicate the strength and nature of the relationship between each feature and the log-odds of belonging to a particular class (Figure~\ref{fig:feature_importance}).
 
 \begin{figure}[H]
     \centering
@@ -127,17 +68,13 @@ For multinomial logistic regression, the model produces a set of coefficients fo
     \label{fig:feature_importance}
 \end{figure}
 
-- The top 5 features for each class are among discharge disposition id code 11, 14, 15, 28 stands for "Expired", "Hospice", "Discharge within this institution", "Discharge to psychiatric facility" respectively.
-
-- The Top features found from Logistic Regression are based on the coefficients of the model.
+The top 5 features for each class are among discharge disposition id code 11, 14, 15, 28 stands for "Expired", "Hospice", "Discharge within this institution", "Discharge to psychiatric facility" respectively.
+The Top features found from Logistic Regression are based on the coefficients of the model.
 The Logistic Regression model is a linear model and hence the coefficients are directly proportional to the importance of the features, assuming linear relationship between the features and the log-odds of the target variable.
 This hence makes the categorical features like discharge disposition stronger predictor.
 
-\subsection{Feature Importance from Random Forest}
-
-The above analysis indicates that there exists potential non-linear relationship between the features and the target variable. 
-Therefore, in order to find the importance of the features, it is recommended to use the Random Forest approach (Figure~\ref{fig:rf_imp}):
-
+The above feature analysis indicates that there exists potential non-linear relationship between the features and the target variable.
+Therefore, in order to find the right importance of the features, it is recommended to use the Random Forest approach (Figure~\ref{fig:rf_imp}):
 The importance features found from Random Forest model are more robust and can capture the non-linear relationship between the features and the target variable. Althought the level of importance are not really strong but it is varying across predictors and provides more reliable results than the Logistic Regression model.
 
 

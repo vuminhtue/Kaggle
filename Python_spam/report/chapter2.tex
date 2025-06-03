@@ -1,0 +1,86 @@
+\chapter{Data}
+
+The original data is a collection of email files in the \texttt{data/} directory. The files are organized into five directories: \texttt{easy\_ham, easy\_ham\_2, hard\_ham, spam, spam\_2}.
+There are two main types of email messages: multipart and singlepart.
+While singlepart messages contain only one part and can be text/plain or text/html,
+multipart messages as their names suggested, have multiple parts, each part can be a different type of content (text, html, etc.).
+In order to read multipart messages, we need to loop through all the parts of the message and check the content type of each part before assigning the correct way to read it.
+
+This chapter delineates the methodological approach employed to transform raw email files into a structured dataset and its corresponding label, which is amenable to statistical analysis and machine learning applications. 
+The initial phase involved systematic traversal of the directory structure to identify and categorize email files. 
+We construct a code to systematically crawl the \texttt{data/} directory and its subdirectories, then identifies files as either spam or ham based on path context (email in folder containing \texttt{spam} is spam, otherwise ham)
+After that, we assigns binary labels (0 for ham, 1 for spam) and records file paths for subsequent content extraction
+
+The extraction of textual content from email files presented significant challenges due to the heterogeneous nature of email formats.
+The preliminary analysis identified different content types required specialized processing methods:
+
+\begin{verbatim}
+Counter({'text/plain': 7413,
+         'multipart/alternative': 326,
+         'text/html': 1193,
+         'multipart/mixed': 179,
+         'multipart/related': 56,
+         'multipart/signed': 180,
+         'text/plain charset=us-ascii': 1,
+         'multipart/report': 5})
+\end{verbatim}
+
+in which: \texttt{text/plain, 'text/plain charset=us-ascii'} are single part text files and could be extracted by \texttt{get\_payload} command, while \texttt{text/html} is another singlepart HTML format and can be extracted using \texttt{BeautifulSoup} library from \texttt{get\_payload} output.
+For multipart related messages: we build a function called \texttt{get\_multipart} approach to extract the content in the nested structure. The following snippet shows the code for these functions:
+
+\begin{verbatim}
+def get_txt_from_type(type_, msg):
+    if type_ == "text/plain":
+        txt = msg.get_payload()
+    elif type_ == "text/plain charset=us-ascii":
+        txt = msg.get_payload()
+    elif type_ == "text/html":
+        soup = BeautifulSoup(msg.get_payload(decode=True), 'html.parser')
+        txt = soup.get_text(separator="\n", strip=True)
+    else:
+        txt = get_multipart(msg)
+    return txt
+
+def get_multipart(msg):
+    payloads = msg.get_payload()
+    content_out = ""
+    if type(payloads) == list:
+        for part in payloads:
+            content_type = part.get_content_type()
+            content_disposition = part.get_content_disposition()
+            charset = part.get_content_charset() or 'utf-8'
+            
+            if content_type == 'text/plain' and content_disposition is None:
+                content1 = part.get_payload(decode=True).decode(charset)
+                content_out=content_out+content1
+            elif content_type == 'text/html' and content_disposition is None:
+                soup = BeautifulSoup(part.get_payload(decode=True), 'html.parser')
+                content2 = soup.get_text(separator="\n", strip=True)
+                content_out=content_out+content2
+    else:
+        soup = BeautifulSoup(msg.get_payload(decode=True), 'html.parser')
+        content_out = soup.get_text(separator="\n", strip=True)
+        
+    return content_out
+\end{verbatim}
+
+This approach enabled the direct extraction of plain text content; ensure HTML parsing with BeautifulSoup to extract readable text
+and recursive extraction from multipart messages
+The extraction methodology was applied to the entire corpus using a systematic batch approach using following code:
+
+\begin{verbatim}
+ftext = []
+for item in contents:
+    with open(item, "r", encoding="latin-1") as f:
+        msg = email.message_from_file(f)
+        type_ = msg.get_content_type()
+        txt = get_txt_from_type(type_, msg)
+        ftext.append(txt)
+\end{verbatim}
+
+This implementation opens each file using Latin-1 encoding to accommodate various character sets, parses the email structure using Python's built-in email module, determines the content type for appropriate processing and extracts and stores the textual content
+
+The final phase involved the assembly of a structured dataset by converting to pandas dataframe and saving to csv file.
+The created a tabular dataset has filename identifiers for traceability, extracted textual content for analysis and binary classification labels (0=ham, 1=spam)
+
+The methodology detailed in this chapter established a robust pipeline for transforming heterogeneous email files into a structured dataset, addressing the complexities inherent in email communications. The resulting \texttt{emails.csv} file provides a foundation for subsequent exploratory data analysis and classification model development. 

@@ -1,38 +1,17 @@
-\section{Background}
+Diabetes is a very bad health probelm. It happens for people all over the world, all genders, all ages.
+The notable problem in diabete is the high level of blood glucose level.
 
-Diabetes represents a significant global health challenge, affecting millions of individuals worldwide and contributing substantially to healthcare expenditure. 
-The condition is characterized by elevated blood glucose levels resulting from defects in insulin production, insulin action, or both. 
-The complications associated with diabetes include cardiovascular disease, nephropathy, retinopathy, and neuropathy, significantly impacting patient quality of life and mortality rates.
+Hospital readmissions among diabetic patients pose a significant burden on healthcare systems.
+Readmissions within 30 days of discharge are particularly concerning as they may indicate inadequate initial treatment, premature discharge, or insufficient follow-up care. 
+Understanding the factors associated with readmission patterns is very important for developing effective intervention strategies to improve patient health and reduce healthcare costs.
 
-Hospital readmissions among diabetic patients constitute a significant burden on healthcare systems, with implications for both quality of care and resource allocation. Readmissions within 30 days of discharge are particularly concerning as they may indicate inadequate initial treatment, premature discharge, or insufficient follow-up care. Understanding the factors associated with readmission patterns is essential for developing effective intervention strategies to improve patient outcomes and reduce healthcare costs.
+This analysis utilizes a comprehensive dataset containing records of diabetic patient encounters at more than hundred hospitals in the US. 
+The dataset comprises 101,766 observations across 50 variables, encompassing patient demographics, admission details, diagnoses, laboratory tests, and medication regimens. 
+The target variable, "readmitted," categorizes patient outcomes into three classes: readmitted within 30 days ("<30"), readmitted after 30 days (">30"), or not readmitted ("NO").
 
-\section{Dataset Description}
-
-This analysis utilizes a comprehensive dataset containing records of diabetic patient encounters from 1999-2008 at 130 U.S. hospitals. The dataset comprises 101,766 observations across 50 variables, encompassing patient demographics, admission details, diagnoses, laboratory tests, and medication regimens. The target variable, "readmitted," categorizes patient outcomes into three classes: readmitted within 30 days ("<30"), readmitted after 30 days (">30"), or not readmitted ("NO").
-
-Key features in the dataset include:
-\begin{itemize}
-    \item Demographic information ('age', 'race', 'gender', 'weight')
-    \item Admission type, source, and discharge disposition ('admission\_type\_id', 'discharge\_disposition\_id', 'admission\_source\_id')
-    \item Primary, secondary, and tertiary diagnoses ('diag\_1', 'diag\_2', 'diag\_3')
-    \item Laboratory tests ('A1Cresults', 'max\_glu\_serum')
-    \item Medication changes during hospitalization ('num\_medications')
-    \item Diabetes medications (e.g., insulin, metformin, glyburide)
-    \item Length of hospital stay ('time\_in\_hospital')
-    \item Number of previous outpatient, inpatient, and emergency visits
-\end{itemize}
-
-\section{Research Objectives}
-
-The primary objectives of this analysis are to:
-
-\begin{enumerate}
-    \item Identify patterns and relationships within the diabetic patient data through comprehensive exploratory data analysis
-    \item There exits several missing values in the dataset, we need to handle and impute them appropriately
-    \item Develop a predictive model using logistic regression with k-fold cross-validation to estimate readmission probabilities
-    \item Evaluate the performance of the model and identify the most influential features affecting readmission outcomes
-    \item Determine the key factors associated with hospital readmission among diabetic patients
-
-\end{enumerate}
+The primary objectives of this analysis is to identify patterns and relationships within the diabetic patient data through comprehensive exploratory data analysis (EDA).
+The most important part of this case study 2 is the methodology to handle missing values and impute them in the dataset.
+Subsequently, develop a predictive model using logistic regression with k-fold cross-validation to estimate readmission probabilities thenevaluate the performance of the model and identify the most influential features affecting readmission outcomes
+Lastly, determine the key factors associated with hospital readmission among diabetic patients.
 
 Through this investigation, we aim to contribute insights that may inform clinical decision-making and intervention strategies to reduce readmission rates among diabetic patients. 

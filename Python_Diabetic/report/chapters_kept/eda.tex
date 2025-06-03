@@ -1,46 +1,74 @@
+\section{Data Overview and Preprocessing}
+
 The exploratory data analysis began with an examination of the dataset structure and composition. The diabetic dataset comprises 101,766 patient encounters with 50 variables. 
 
-The distribution of the target variable "readmitted" reveals that 53.9\% patients were not readmitted, 34.9\% were readmitted after 30 days, and 11.2\% were readmitted within 30 days (Figure~\ref{fig:readmission_dist}).
+The distribution of the target variable "readmitted" reveals that 54,864 (53.9\%) patients were not readmitted, 35,545 (34.9\%) were readmitted after 30 days, and 11,357 (11.2\%) were readmitted within 30 days (Figure 2.1).
 The target variable is imbalanced, which is a common issue in healthcare datasets.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{../figures/readmission_distribution.png}
     \caption{Distribution of patient readmission categories}
     \label{fig:readmission_dist}
 \end{figure}
 
-A critical aspect of the preprocessing phase involved identifying and addressing missing values within the dataset. 
-Nine variables exhibited missing values, with "weight" showing the highest proportion at 96.9\%, followed by "max\_glu\_serum" and "A1Cresult" at 94.75\% and 83.28\% respectively. (Figure \ref{fig:missing_values})
+Initial preprocessing steps included:
+\begin{itemize}
+    \item Removal of identifier variables (encounter\_id and patient\_nbr)
+    \item Replacement of "?" placeholders with NaN values for proper missing value handling
+\end{itemize}
 
-\begin{figure}[H]
+\section{Missing Value Analysis and Imputation}
+
+A critical aspect of the preprocessing phase involved identifying and addressing missing values within the dataset. 
+Nine variables exhibited missing values, with "weight" showing the highest proportion at 96.9\%, followed by "max\_glu\_serum" and "A1Cresult" at 94.75\% and 83.28\% respectively.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{../figures/missing_values_percentage.png}
     \caption{Percentage of missing values by variable}
     \label{fig:missing_values}
 \end{figure}
 
-Althought "weight" is very important factor to identify the diabete condition, however, due to its extremely high percentage of missing values (96.9\%) we dropped this variable.
-Despite its high percentage of missing values, due to small amount of categorical objects, the "max\_glu\_serum", "A1Cresult", and "medical\_specialty", were imputed with the value "None".
-Similar to the above categorical variables, the "payer\_code" and "race" variables were imputed with the value "None".
-For diagnosis variables: "diag\_1", "diag\_2", "diag\_3", missing values were imputed with the value "None". Categories with less than 0.5\% occurrence were merged into a new "Rest" category to reduce dimensionality and prevent overfitting. 
-Due to its importance, the "diag\_1" variable was considered more important than "diag\_2", and "diag\_2" was considered more important than "diag\_3". If a patient has multiple diagnoses, the most important one was selected and put into the "diag" variable.
-The "Rest" category was created to handle the rare cases and thus has less importance ranking (after diag\_3).
-The "None" category was created to handle the missing values and has the least importance (after "Rest").
-This approach was used to handle the overfitting issue and reduce the dimensionality of the dataset.
-For "race", the missing values were imputed with "None", althought it could be algined with "Caucasian" or "AfricanAmerican" categories, due to high median values.
-For "age", the missing values were imputed with the median of the variable. ("age\_mid")
+The following imputation strategies were implemented:
+\begin{itemize}
+    \item Althought "weight" is very important factor to identify the diabete condition, however, due to its extremely high percentage of missing values (96.9\%) we dropped this variable.
+    \item Despite its high percentage of missing values, due to small amount of categorical objects, the "max\_glu\_serum", "A1Cresult", and "medical\_specialty", were imputed with the value "None"
+    \item Similar to the above categorical variables, the "payer\_code" and "race" variables were imputed with the value "None
+    \item For diagnosis variables: "diag\_1", "diag\_2", "diag\_3", missing values were imputed with the value "None". Categories with less than 0.5\% occurrence were merged into a new "Rest" category to reduce dimensionality and prevent overfitting. 
+    Due to its importance, the "diag\_1" variable was considered more important than "diag\_2", and "diag\_2" was considered more important than "diag\_3". If a patient has multiple diagnoses, the most important one was selected and put into the "diag" variable.
+    The "Rest" category was created to handle the rare cases and thus has less importance ranking (after diag\_3).
+    The "None" category was created to handle the missing values and has the least importance (after "Rest").
+    This approach was used to handle the overfitting issue and reduce the dimensionality of the dataset.
+    \item For "race", the missing values were imputed with "None", althought it could be algined with "Caucasian" or "AfricanAmerican" categories, due to high median values.
+    \item For "age", the missing values were imputed with the median of the variable. ("age\_mid")
+\end{itemize}
+\FloatBarrier
 
+\section{Categorical Variable Analysis}
 
-Based on distribution analysis and correlation with the target variable, we retain the following categorical variables: Demographics: race, gender, payer\_code (Figure~\ref{fig:cat1}),
-Medical details: max\_glu\_serum, A1Cresult, medical\_specialty (Figure~\ref{fig:cat2}), Medications: metformin, glimepiride, glipizide, glyburide, pioglitazone, rosiglitazone (Figure~\ref{fig:cat3}),
-Treatment process: insulin,change, diabetesMed (Figure~\ref{fig:cat4}), Diagnosis: diag (Figure~\ref{fig:cat5}),   
-Hospital factors: admission\_type\_id, discharge\_disposition\_id, admission\_source\_id (Figure~\ref{fig:cat6})
+The dataset contains numerous categorical variables representing patient demographics, diagnoses, medications, and hospital admission details. Categorical variables were categorized into two groups based on their distribution patterns and relationship with the target variable.
 
-From above analysis, we can see that: Over 70\% of patients are Caucasian, with distinct readmission patterns across racial groups (Figure~\ref{fig:cat1}),
-For Emergency intake (type 1) accounts for more than 50\% of admissions (Figure~\ref{fig:cat6})   
-For Discharge disposition: Approximately 60\% of patients are discharged to home (Figure~\ref{fig:cat6}) 
-Lastly, For Admission source: Nearly 60\% of admissions originate from emergency rooms, followed by 30\% from physician referrals (Figure~\ref{fig:cat6})
+\subsection{Key Categorical Variables}
+
+Based on distribution analysis and correlation with the target variable, the following categorical variables were identified as significant:
+
+\begin{itemize}
+    \item Demographics: race, gender, payer\_code (Figure~\ref{fig:cat1})
+    \item Medical details: max\_glu\_serum, A1Cresult, medical\_specialty (Figure~\ref{fig:cat2})
+    \item Medications: metformin, glimepiride, glipizide, glyburide, pioglitazone, rosiglitazone (Figure~\ref{fig:cat3})
+    \item Treatment process: insulin,change, diabetesMed (Figure~\ref{fig:cat4})
+    \item Diagnosis: diag (Figure~\ref{fig:cat5})   
+    \item Hospital factors: admission\_type\_id, discharge\_disposition\_id, admission\_source\_id (Figure~\ref{fig:cat6})
+\end{itemize}
+
+Notable findings include:
+\begin{itemize}
+    \item Race: Over 70\% of patients are Caucasian, with distinct readmission patterns across racial groups (Figure~\ref{fig:cat1})
+    \item Admission type: Emergency intake (type 1) accounts for more than 50\% of admissions (Figure~\ref{fig:cat6})   
+    \item Discharge disposition: Approximately 60\% of patients are discharged to home (Figure~\ref{fig:cat6})
+    \item Admission source: Nearly 60\% of admissions originate from emergency rooms, followed by 30\% from physician referrals (Figure~\ref{fig:cat6})
+\end{itemize}
 
 Detailed information about the codes of Admission type, Discharge disposition, and Admission source are shown in Table~\ref{tab:admission-types}, Table~\ref{tab:discharge-disposition}, and Table~\ref{tab:admission-source}.
 
@@ -187,7 +215,16 @@ Detailed information about the codes of Admission type, Discharge disposition, a
     \label{tab:admission-source}
 \end{table}
 
-Several medication variables were excluded from further analysis due to extreme skewness that could lead to overfitting and they are represented in Figure~\ref{fig:cat7}
+\subsection{Excluded Categorical Variables}
+
+Several medication variables were excluded from further analysis due to extreme skewness that could lead to overfitting (Figure~\ref{fig:cat7}):
+
+\begin{itemize}
+    \item "repaglinide", "nateglinide", "chlorpropamide"
+    \item "acetohexamide", "tolbutamide","acarbose","miglitol","troglitazone","tolazamide"
+    \item "examide","citoglipton","glyburide-metformin",
+    \item "glipizide-metformin","glimepiride-pioglitazone","metformin-rosiglitazone","metformin-pioglitazone"
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -196,8 +233,24 @@ Several medication variables were excluded from further analysis due to extreme 
     \label{fig:cat7}
 \end{figure}
 
-Next, we analyze the numerical variables in the dataset include: time\_in\_hospital, num\_lab\_procedures, num\_procedures, num\_medications, number\_outpatient, number\_emergency, number\_inpatient, number\_diagnoses, age\_mid.
-For numerical data, cross correlation analysis was conducted to identify potential relationships between numerical variables. The correlation matrix did not reveal high collinearity between the variables, with most correlation coefficients below 0.4. (Figure~\ref{fig:corr_matrix})
+\section{Numerical Variable Analysis}
+
+The numerical variables in the dataset include:
+\begin{itemize}
+    \item time\_in\_hospital: Length of hospital stay
+    \item num\_lab\_procedures: Number of laboratory procedures
+    \item num\_procedures: Number of procedures other than laboratory
+    \item num\_medications: Number of distinct medications
+    \item number\_outpatient: Number of outpatient visits
+    \item number\_emergency: Number of emergency visits
+    \item number\_inpatient: Number of inpatient visits
+    \item number\_diagnoses: Number of diagnoses
+    \item age\_mid: Midpoint of age range
+\end{itemize}
+
+\subsection{Correlation Analysis}
+
+Correlation analysis was conducted to identify potential relationships between numerical variables. The correlation matrix did not reveal high collinearity between the variables, with most correlation coefficients below 0.4. (Figure~\ref{fig:corr_matrix})
 
 \begin{figure}[H]
     \centering
@@ -217,13 +270,24 @@ the VIF values remained within acceptable ranges (<10), and no numerical variabl
     \label{fig:vif_barplot}
 \end{figure}
 
-In addition to the correlation and VIF analysis, distribution analysis was conducted to identify potential probability distribution issues with the numerical variables.
-In Figure~\ref{fig:num_dist}, histograms of numerical variables revealed the Gaussian distribution for num\_lab\_procedures; right-skewed distributions for time\_in\_hospital, num\_procedures, and num\_medications;
-left-skewed distribution for age-mid and number\_diagnoses; and extreme right-skew for number\_outpatient, number\_emergency, and number\_inpatient, with most values being zero.
+\subsection{Distribution Analysis}
 
-Due to the extreme skew in outpatient, emergency, and inpatient visit counts, these variables were transformed into categorical variables: cat\_outpatient: 0 for no visits, 1 for one or more visits;
-cat\_emergency: 0 for no visits, 1 for one or more visits;
-cat\_inpatient: 0 for no visits, 1 for one visit, 2 for more than one visit.
+In addition to the correlation and VIF analysis, distribution analysis was conducted to identify potential probability distribution issues with the numerical variables.
+In Figure~\ref{fig:num_dist}, Histograms of numerical variables revealed:
+
+\begin{itemize}
+    \item Gaussian distribution for num\_lab\_procedures
+    \item Right-skewed distributions for time\_in\_hospital, num\_procedures, and num\_medications
+    \item Left-skewed distribution for age-mid and number\_diagnoses
+    \item Extreme right-skew for number\_outpatient, number\_emergency, and number\_inpatient, with most values being zero
+\end{itemize}
+
+Due to the extreme skew in outpatient, emergency, and inpatient visit counts, these variables were transformed into categorical variables:
+\begin{itemize}
+    \item cat\_outpatient: 0 for no visits, 1 for one or more visits
+    \item cat\_emergency: 0 for no visits, 1 for one or more visits
+    \item cat\_inpatient: 0 for no visits, 1 for one visit, 2 for more than one visit
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -232,7 +296,9 @@ cat\_inpatient: 0 for no visits, 1 for one visit, 2 for more than one visit.
     \label{fig:num_dist}
 \end{figure}
 
-The Boxplots in Figure~\ref{fig:num_boxplots} were used to visualize the relationship between numerical variables and the readmission status. 
+\subsection{Relationship with Target Variable}
+
+Boxplots in Figure~\ref{fig:num_boxplots} were used to visualize the relationship between numerical variables and the readmission status. 
 The analysis showed comparable distributions across the three readmission categories, indicating that standardization of numerical variables would be appropriate before integration with categorical features.
 
 \begin{figure}[H]
@@ -242,8 +308,15 @@ The analysis showed comparable distributions across the three readmission catego
     \label{fig:num_boxplots}
 \end{figure}
 
-After comprehensive exploratory analysis, we merged the transformed categorical variables (cat\_outpatient, cat\_emergency, cat\_inpatient) with the selected categorical features.
-We applied One-hot encoding (OHE) to these categorical variables, resulting in 193 transformed features.
-We also scale the numerical variables then integrate to form the final input feature matrix X.
+\section{Feature Engineering and Preparation for Modeling}
+
+After comprehensive exploratory analysis, the following preprocessing steps were implemented to prepare the data for modeling:
+
+\begin{enumerate}
+    \item Merging of the transformed categorical variables (cat\_outpatient, cat\_emergency, cat\_inpatient) with the selected categorical features
+    \item One-hot encoding of categorical variables, resulting in 193 binary features
+    \item Standardization of remaining numerical variables
+    \item Integration of encoded categorical features with standardized numerical features to form the final feature matrix X
+\end{enumerate}
 
 This preprocessing pipeline transformed the original dataset with 50 variables into a modeling-ready matrix while preserving the information content and addressing the identified data quality issues.

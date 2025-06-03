@@ -1,0 +1,24 @@
+\chapter{Introduction}
+
+Email spam, also known as junk email, refers to unsolicited messages sent in bulk via electronic messaging systems. 
+Because of these unwanted emails, there is a need to segregate legitimate correspondence (ham) from unwanted solicitations (spam). 
+This discrimination task represents a canonical binary classification problem in text analysis and information security domains.
+
+This study addresses the automated classification of electronic mail communications into spam and ham categories based on textual content analysis. 
+The classification system must exhibit high accuracy while minimizing both false positive identifications (legitimate emails incorrectly flagged as spam) and false negative identifications (spam incorrectly classified as legitimate).
+
+The input data utilized in this case study comprises a collection of email communications extracted from various sources, each pre-labeled as prefix of either spam or ham. These communications contain diverse textual features including:
+email headers containing metadata (sender, recipient, date, subject), message body content in various formats (plain text, HTML, multipart). These messages may contain potentially embedded URLs, imagery references, and attachments and has 
+varying degrees of message complexity and length
+
+The primary objectives of this investigation include:
+
+\begin{enumerate}
+    \item Construction of a solid methodology for email content extraction and classification to corresponding target class, output is saved to separted csv file.
+    \item Identification of discriminative language features between spam and ham communications
+    \item Develope a Machine Learning models for spam email classification using Naive Bayes.
+    \item Quantitative assessment of classification performance metrics
+    \item Visualization of the results
+\end{enumerate}
+
+The subsequent chapters detail the methodological approach, exploratory analysis, model development, and conclusions derived from this study. 
