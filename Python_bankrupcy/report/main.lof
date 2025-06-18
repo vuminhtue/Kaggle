@@ -1,0 +1,11 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Distribution of Missing Values Across Features. The plot shows X37 with the highest percentage of missing values (highlighted in red), followed by moderate missingness in X21 and X27 (orange), while most other features have minimal missing data (blue).}}{9}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Percentage of Bankruptcies by Prediction Horizon. The chart shows the distribution of bankruptcy cases across the five prediction timeframes, demonstrating consistent but low bankruptcy rates across all horizons, highlighting the class imbalance challenge.}}{10}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Feature Correlation Heatmap with Hierarchical Clustering. The clustermap shows the absolute correlation matrix of all 63 financial features, with hierarchical clustering applied to both rows and columns. Similar features are grouped together, revealing distinct clusters of highly correlated financial ratios.}}{12}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Top Cluster Correlation Heatmap. This detailed view shows the correlation structure within the dominant cluster (Cluster 8) containing 17 highly intercorrelated features. The annotated correlation coefficients reveal the strength of relationships between features, informing the final selection of 15 representative variables.}}{14}{figure.caption.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Feature Importance Comparison: Random Forest vs XGBoost. The chart shows the relative importance of the top 10 selected features across both algorithms. XGBoost generally assigns higher importance to the top features, while Random Forest shows a more distributed importance pattern.}}{18}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Model Performance Comparison: Accuracy vs AUC. The dual-axis chart compares the performance of Random Forest and XGBoost models using both full and selected feature sets. While accuracy remains relatively stable across configurations, AUC scores show significant variation, with XGBoost (Full) achieving the highest AUC of 0.847.}}{21}{figure.caption.20}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
