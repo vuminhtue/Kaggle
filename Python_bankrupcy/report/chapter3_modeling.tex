@@ -1,244 +1,177 @@
-\chapter{Modeling with Random Forest and XGBoost}
+\chapter{Modeling Methodology and Results}
 
-\section{Modeling Framework Overview}
+This chapter presents the implementation and evaluation of ensemble machine learning models for bankruptcy prediction. Two prominent ensemble methods (Bagging and Boosting style), Random Forest and XGBoost, were applied to both full and selected feature datasets, resulting in four distinct modeling approaches for comprehensive performance comparison.
 
-The modeling phase employed two state-of-the-art ensemble learning algorithms: Random Forest and XGBoost (Extreme Gradient Boosting). These tree-based methods were selected for their robust performance in handling complex feature interactions, non-linear relationships, and class imbalance scenarios commonly encountered in financial prediction tasks.
+Random Forest represents a robust ensemble method that combines multiple decision trees through bootstrap aggregating (bagging). Each tree in the forest is trained on a different bootstrap sample of the data, and predictions are made through majority voting for classification tasks. The method incorporates randomness at both the observation level (through bootstrap sampling) and feature level (through random feature selection at each split), reducing overfitting and improving generalization performance.
+Key advantages of Random Forest for bankruptcy prediction include its ability to handle mixed data types, resistance to overfitting, implicit feature selection capabilities, and provision of feature importance measures. The method's ensemble nature makes it particularly suitable for financial data where relationships may be complex and non-linear.
 
-The modeling strategy encompassed:
-\begin{itemize}
-    \item Comparative analysis using both full feature set (63 features) and selected feature set (15 features)
-    \item Systematic hyperparameter optimization through grid search with cross-validation
-    \item Performance evaluation using multiple metrics including accuracy, precision, recall, and AUC
-    \item Early stopping mechanisms to prevent overfitting and optimize computational efficiency
-\end{itemize}
+XGBoost (Extreme Gradient Boosting) on the other hand, represents an advanced implementation of gradient boosting that sequentially builds decision trees to correct errors from previous iterations. Unlike Random Forest's parallel tree construction, XGBoost employs a sequential approach where each tree learns from the residuals of its predecessors, resulting in progressively improved predictions.
+XGBoost incorporates several sophisticated features including regularization terms to prevent overfitting, advanced tree pruning algorithms, and optimized computational efficiency. These characteristics make it particularly effective for complex financial prediction tasks where subtle patterns and feature interactions are crucial for accurate classification.
 
-\section{Random Forest Implementation}
+Four distinct models were developed to enable comprehensive performance assessment:
 
-Random Forest, an ensemble method that combines predictions from multiple decision trees, was implemented with careful attention to hyperparameter optimization and feature selection impact assessment.
-
-\subsection{Baseline Random Forest Models}
-
-\subsubsection{Full Feature Set Model (RF1)}
-
-The initial Random Forest model was trained using all 63 available features after preprocessing:
-
-\begin{itemize}
-    \item \textbf{Configuration}: 100 estimators, random state = 123
-    \item \textbf{Data Split}: 80\% training, 20\% testing
-    \item \textbf{Baseline Performance}: Established performance benchmark for subsequent optimization
-\end{itemize}
-
-\subsubsection{Selected Feature Set Model (RF2)}
-
-A parallel model was developed using the 15 carefully selected features identified through correlation analysis and hierarchical clustering:
-
-\begin{itemize}
-    \item \textbf{Feature Set}: X44, X14, X36, X3, X25, X31, X40, X17, X64, X45, X61, X55, X59, X5, X15
-    \item \textbf{Rationale}: Reduced dimensionality while maintaining predictive power
-    \item \textbf{Advantage}: Lower computational complexity and reduced multicollinearity risk
-\end{itemize}
-
-\subsection{Hyperparameter Optimization}
-
-Comprehensive grid search with 5-fold cross-validation was implemented to identify optimal hyperparameters for both Random Forest configurations.
-
-\subsubsection{Parameter Grid Specification}
-
-The hyperparameter search space encompassed:
-
-\begin{itemize}
-    \item \textbf{Criterion}: ['gini', 'entropy'] - Split quality measures
-    \item \textbf{Max Features}: [5, 10, 15, 20] - Number of features considered for each split
-    \item \textbf{Max Depth}: [None, 1, 3, 5, 7, 9] - Maximum tree depth constraints
-    \item \textbf{Min Samples Split}: [8, 6, 4] - Minimum samples required for node splitting
-    \item \textbf{Min Samples Leaf}: [4, 2, 1] - Minimum samples required at leaf nodes
-\end{itemize}
-
-\subsubsection{Cross-Validation Strategy}
-
-The optimization process employed:
-\begin{itemize}
-    \item \textbf{Validation Method}: 5-fold stratified cross-validation
-    \item \textbf{Scoring Metric}: Accuracy as primary optimization criterion
-    \item \textbf{Computational Approach}: Parallel processing with n\_jobs=-1 for efficiency
-    \item \textbf{Verbosity}: Detailed progress tracking for optimization monitoring
-\end{itemize}
-
-\subsubsection{Optimal Hyperparameters}
-
-The grid search identified optimal configurations for both feature sets, revealing insights into the relationship between feature selection and optimal model complexity.
-
-\subsection{Random Forest Performance Analysis}
-
-The Random Forest models demonstrated robust performance across both feature configurations, with important implications for feature selection strategies in bankruptcy prediction.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/feature_importance.png}
-\caption{Feature Importance Comparison: Random Forest vs XGBoost. The chart shows the relative importance of the top 10 selected features across both algorithms. XGBoost generally assigns higher importance to the top features, while Random Forest shows a more distributed importance pattern.}
-\label{fig:feature_importance}
-\end{figure}
-
-\subsubsection{Model Comparison Framework}
-
-Performance evaluation encompassed:
-\begin{itemize}
-    \item Classification reports with precision, recall, and F1-scores
-    \item Confusion matrices for detailed classification analysis
-    \item Overall accuracy metrics for model comparison
-    \item Cross-validation scores for generalization assessment
-\end{itemize}
-
-\section{XGBoost Implementation}
-
-XGBoost was implemented as a complementary ensemble method, leveraging gradient boosting principles to potentially achieve superior performance through sequential learning optimization.
-
-\subsection{Initial XGBoost Configuration}
-
-The baseline XGBoost model was configured with standard parameters optimized for binary classification:
-
-\begin{itemize}
-    \item \textbf{Estimators}: 100 trees for initial assessment
-    \item \textbf{Max Depth}: 3 levels to control overfitting
-    \item \textbf{Learning Rate}: 0.1 for balanced convergence
-    \item \textbf{Evaluation Metric}: Log-loss for binary classification optimization
-    \item \textbf{Random State}: 42 for reproducibility
-\end{itemize}
-
-\subsection{XGBoost Performance Challenges}
-
-The initial XGBoost implementation revealed significant challenges related to class imbalance:
-
-\begin{itemize}
-    \item \textbf{Precision Issues}: Zero precision for bankruptcy class (class 1)
-    \item \textbf{Recall Problems}: Complete failure to identify bankruptcy cases
-    \item \textbf{Class Imbalance Impact}: Model bias toward majority class (non-bankruptcy)
-    \item \textbf{Overall Accuracy}: High accuracy (95.4\%) due to class distribution, but poor predictive utility
-\end{itemize}
-
-\subsection{Advanced XGBoost Optimization}
-
-To address the class imbalance challenges, an advanced optimization framework was implemented using custom parameter search and cross-validation.
-
-\subsubsection{Random Search Implementation}
-
-A sophisticated random search algorithm was developed to explore the XGBoost hyperparameter space:
-
-\textbf{XGBoost Random Search Optimization Algorithm:}
 \begin{enumerate}
-\item Initialize parameter ranges for optimization
-\item \textbf{for} i = 1 to n\_iterations \textbf{do}
-\begin{enumerate}
-\item Randomly sample hyperparameters:
-\begin{itemize}
-\item subsample $\sim$ Uniform(0.5, 1.0)
-\item max\_depth $\sim$ \{2, 4, 6, 8, 10, 12, 15, 20\}
-\item colsample\_bytree $\sim$ Uniform(0.5, 1.0)
-\item colsample\_bylevel $\sim$ Uniform(0.5, 1.0)
-\item colsample\_bynode $\sim$ Uniform(0.5, 1.0)
-\end{itemize}
-\item Perform 5-fold cross-validation with AUC metric
-\item Apply early stopping (10 rounds)
-\item Update best parameters if AUC improves
-\end{enumerate}
-\item \textbf{end for}
-\item Return optimal parameters and best score
+    \item Random Forest with Full Features (RF\_Full): Utilizing all 63 features after X37 removal
+    \item Random Forest with Selected Features (RF\_Selected): Utilizing the 15 clustered features
+    \item XGBoost with Full Features (XGB\_Full): Utilizing all 63 features after X37 removal
+    \item XGBoost with Selected Features (XGB\_Selected): Utilizing the 15 clustered features
 \end{enumerate}
 
-\subsubsection{Hyperparameter Search Space}
+Each model employed an 80-20 train-test split with consistent random state (123) to ensure reproducible results and fair comparison across modeling approaches.
 
-The random search explored:
-\begin{itemize}
-    \item \textbf{Subsample Ratio}: [0.5, 1.0] - Training sample fraction per tree
-    \item \textbf{Tree Depth}: \{2, 4, 6, 8, 10, 12, 15, 20\} - Maximum tree complexity
-    \item \textbf{Column Sampling}: [0.5, 1.0] - Feature sampling at different tree levels
-    \item \textbf{Regularization}: Implicit through sampling parameters
-    \item \textbf{Early Stopping}: 10 rounds to prevent overfitting
-\end{itemize}
+\section*{Hyperparameter Optimization}
 
-\subsection{XGBoost Training with Early Stopping}
+\subsection*{Random Forest Hyperparameter Tuning}
 
-Advanced training procedures were implemented to optimize convergence and prevent overfitting:
-
-\subsubsection{Training Configuration}
+Comprehensive hyperparameter optimization was conducted using 5-fold cross-validation with GridSearchCV. The parameter search space included:
 
 \begin{itemize}
-    \item \textbf{Objective Function}: Binary logistic regression
-    \item \textbf{Evaluation Metric}: Area Under the Curve (AUC)
-    \item \textbf{Boosting Rounds}: Up to 1000 iterations
-    \item \textbf{Early Stopping}: 10 rounds without improvement
-    \item \textbf{Evaluation Sets}: Both training and testing for monitoring
+    \item Criterion: ['gini', 'entropy']
+    \item Max features: [5, 10, 15, 20]
+    \item Max depth: [None, 1, 3, 5, 7, 9]
+    \item Min samples split: [8, 6, 4]
+    \item Min samples leaf: [4, 2, 1]
 \end{itemize}
 
-\subsubsection{Training Performance Monitoring}
+Detailed results from hyperparameter tuning for Random Forest models are shown in Table \ref{tab:rf_hyperparams}.
 
-The training process included comprehensive performance tracking:
+\begin{table}[H]
+    \centering
+    \caption{Optimal Hyperparameters for Random Forest Models}
+    \label{tab:rf_hyperparams}
+    \begin{tabular}{lcc}
+    \toprule
+    \textbf{Hyperparameter} & \textbf{RF\_Full} & \textbf{RF\_Selected} \\
+    \midrule
+    Criterion & entropy & entropy \\
+    Max Depth & None & 7 \\
+    Max Features & 20 & 10 \\
+    Min Samples Leaf & 2 & 2 \\
+    Min Samples Split & 8 & 8 \\
+    CV Score & 0.9582 & 0.9514 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
-For the selected feature set model:
-\begin{itemize}
-    \item Initial AUC: 0.700 (training), 0.699 (testing)
-    \item Progressive improvement through boosting iterations
-    \item Convergence monitoring through validation scores
-    \item Early stopping activation to prevent overfitting
-\end{itemize}
+\subsection*{XGBoost Hyperparameter Tuning}
 
-For the full feature set model:
-\begin{itemize}
-    \item Enhanced initial performance: 0.712 (training), 0.700 (testing)
-    \item Superior convergence: Final AUC reaching 0.847 (testing)
-    \item Optimal stopping around iteration 42
-    \item Demonstration of full feature set advantages for XGBoost
-\end{itemize}
-
-\section{Comparative Model Performance}
-
-\subsection{Feature Set Impact Analysis}
-
-The comparative analysis revealed important insights regarding feature selection strategies:
+XGBoost hyperparameter optimization employed a custom random search approach with 30 iterations, optimizing AUC scores through 5-fold cross-validation. The search space included:
 
 \begin{itemize}
-    \item \textbf{Random Forest}: Relatively robust performance across both feature configurations
-    \item \textbf{XGBoost}: Significant performance improvement with full feature set
-    \item \textbf{Feature Selection Trade-offs}: Computational efficiency vs. predictive performance
-    \item \textbf{Algorithm Sensitivity}: XGBoost demonstrated higher sensitivity to feature availability
+    \item Max depth: [2, 4, 6, 8, 10, 12, 15, 20]
+    \item Subsample: [0.5, 1.0]
+    \item Colsample bytree: [0.5, 1.0]
+    \item Colsample bylevel: [0.5, 1.0]
+    \item Colsample bynode: [0.5, 1.0]
 \end{itemize}
 
-\subsection{Cross-Validation Results}
+The optimization process identified optimal configurations for both full and selected feature models, with the full feature model achieving superior cross-validation AUC scores compared to the selected feature variant.
+Detailed results from hyperparameter tuning for XGBoost models are shown in Table \ref{tab:xgb_hyperparams}.
 
-The systematic cross-validation approach provided robust performance estimates:
+\begin{table}[H]
+    \centering
+    \caption{XGBoost Hyperparameter Search Results}
+    \label{tab:xgb_hyperparams}
+    \begin{tabular}{lcc}
+    \toprule
+    \textbf{Parameter} & \textbf{Search Range} & \textbf{Optimal Configuration} \\
+    \midrule
+    Max Depth & [2, 4, 6, 8, 10, 12, 15, 20] & 15 (Full), 8 (Selected) \\
+    Subsample & [0.5, 1.0] & 0.75 \\
+    Colsample Bytree & [0.5, 1.0] & 0.8-0.9 \\
+    Colsample Bylevel & [0.5, 1.0] & 0.6-0.8 \\
+    Colsample Bynode & [0.5, 1.0] & 0.7-0.9 \\
+    Learning Rate & Fixed & 0.1 \\
+    N Estimators & Fixed & 100 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
-\begin{itemize}
-    \item \textbf{Validation Strategy}: 5-fold stratified cross-validation
-    \item \textbf{Performance Stability}: Consistent results across validation folds
-    \item \textbf{Generalization Assessment}: Evidence of model robustness
-    \item \textbf{Hyperparameter Reliability}: Validated optimal configurations
-\end{itemize}
+\section*{Model Performance Results}
+
+The performance results for all four models are shown in Table \ref{tab:model_performance}.
+We can see that XGBoost models generally perform slightly better than Random Forest models, with XGBoost\_Full achieving the highest overall accuracy (96.9\%) and XGBoost\_Selected achieving the highest bankruptcy precision (0.89).
+With the selected feature models, the performance is slightly lower than the full feature models, but the difference is not significant. 
+The reason is that the selected feature models are not able to capture the same level of information as the full feature models.
+Both Random Forest and XGBoost models are rooted in tree-based model, which does not require feature scaling. Therefore, it is not necessary to scale the features for these models as shown in the EDA section.
+
+\begin{table}[H]
+    \centering
+    \caption{Comprehensive Model Performance Comparison}
+    \label{tab:model_performance}
+    \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Metric} & \textbf{RF\_Full} & \textbf{RF\_Selected} & \textbf{XGB\_Full} & \textbf{XGB\_Selected} \\
+    \midrule
+    \textbf{Overall Accuracy} & 95.5\% & 94.8\% & 96.9\% & 94.9\% \\
+    \textbf{Bankruptcy Precision} & 0.56 & 0.05 & 0.89 & 0.17 \\
+    \textbf{Bankruptcy Recall} & 0.07 & 0.01 & 0.36 & 0.03 \\
+    \textbf{Bankruptcy F1-score} & 0.12 & 0.01 & 0.52 & 0.05 \\
+    \textbf{Macro Avg F1-score} & 0.55 & 0.49 & 0.75 & 0.51 \\
+    \textbf{Weighted Avg F1-score} & 0.94 & 0.93 & 0.96 & 0.93 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Receiver Operating Characteristic (ROC) analysis serves as the primary evaluation framework for assessing model discriminative ability across all decision thresholds. ROC curves plot the True Positive Rate (Sensitivity) against the False Positive Rate (1-Specificity), providing a threshold-independent assessment of classification performance. The Area Under the Curve (AUC) summarizes this performance into a single metric, where values closer to 1.0 indicate superior discriminative ability.
+
+The ROC analysis revealed substantial performance differences across the four modeling approaches. Figure \ref{fig:roc_curves} presents the complete ROC curves for all models, demonstrating clear performance hierarchies and the impact of both algorithmic choice and feature selection strategies.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/model_performance.png}
-\caption{Model Performance Comparison: Accuracy vs AUC. The dual-axis chart compares the performance of Random Forest and XGBoost models using both full and selected feature sets. While accuracy remains relatively stable across configurations, AUC scores show significant variation, with XGBoost (Full) achieving the highest AUC of 0.847.}
-\label{fig:model_performance}
+    \centering
+    \includegraphics[width=1\textwidth]{figures/ROC.png}
+    \caption{ROC Curves Comparison for All Four Models}
+    \label{fig:roc_curves}
 \end{figure}
 
-\section{Model Selection Considerations}
-
-The comprehensive modeling analysis established several key considerations for bankruptcy prediction model selection:
-
-\subsection{Algorithm Strengths}
+\textbf{Model-Specific ROC Performance:}
 
 \begin{itemize}
-    \item \textbf{Random Forest}: Robust performance, interpretability, reduced overfitting risk
-    \item \textbf{XGBoost}: Superior performance potential, advanced regularization, gradient optimization
+    \item \textbf{XGB\_Full (AUC = 0.95):} Exhibits exceptional discriminative ability with the curve positioned closest to the top-left corner, indicating optimal sensitivity-specificity balance across all threshold values.
+    
+    \item \textbf{RF\_Full (AUC = 0.89):} Demonstrates strong performance but with noticeable deviation from the optimal curve, particularly in the high-sensitivity region crucial for bankruptcy detection.
+    
+    \item \textbf{XGB\_Selected (AUC = 0.78):} Shows moderate discriminative ability with significant performance degradation compared to the full feature variant, highlighting the importance of comprehensive feature sets.
+    
+    \item \textbf{RF\_Selected (AUC = 0.73):} Exhibits the weakest performance with substantial deviation from optimal classification, indicating limitations in both algorithmic approach and feature representation.
 \end{itemize}
 
-\subsection{Implementation Challenges}
+\section*{Feature Importance Analysis}
 
-\begin{itemize}
-    \item \textbf{Class Imbalance}: Significant impact on model performance and evaluation
-    \item \textbf{Hyperparameter Sensitivity}: Extensive optimization required for optimal performance
-    \item \textbf{Computational Requirements}: Trade-offs between accuracy and efficiency
-    \item \textbf{Feature Engineering}: Importance of comprehensive feature selection analysis
-\end{itemize}
+Feature importance analysis revealed key financial indicators driving bankruptcy predictions.
+Both Random Forest and XGBoost models have option to calculate feature importance.
+The feature importance is calculated by the mean decrease in impurity (MDI) for Random Forest and gain for XGBoost.
+The top 10 most important features for Random Forest and XGBoost Full and Selected models are shown in Figure \ref{fig:feature_importance_RF} and Figure \ref{fig:feature_importance_XGB} respectively.
 
-The modeling phase successfully demonstrated the effectiveness of ensemble methods for bankruptcy prediction while highlighting the critical importance of appropriate hyperparameter optimization and class imbalance handling strategies. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Top10_RF.png}
+    \caption{Feature Importance Analysis for Random Forest Models}
+    \label{fig:feature_importance_RF}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Top10_XGB.png}
+    \caption{Feature Importance Analysis for XGBoost Models}
+    \label{fig:feature_importance_XGB}
+\end{figure}
+
+From the feature importance analysis, we can see that the there exists a significant difference between the top 10 most important features for Random Forest and XGBoost models for both full and selected feature models. The reason is that for Selected features we already removed the highly correlated features, which might be in the top features from Full model.
+Among 10 important features, 5 features are the common for both Random Forest and XGBoost models with Full data, which are X35, X5, X56, X39,X44. This might be explained by the fact that the Random Forest and XGBoost models are different in the way they calculate feature importance.
+For Selected data, there are more common features are X15, X40, X14, X25, X31, X55, X45, X3.
+
+\textbf{Top 5 common Important Features (XGB\_Full and RF\_Full):}
+\begin{enumerate}
+    \item X35: Profit on sales / total assets
+    \item X5: [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)]*365
+    \item X56: (sales - cost of products sold) / sales
+    \item X39: Profit on sales / sales
+    \item X44: (receivables * 365) / sales
+\end{enumerate}
+
+All models underwent rigorous 5-fold cross-validation during hyperparameter optimization, ensuring robust performance estimates and reducing overfitting risks. The cross-validation results demonstrated consistent performance across folds, validating the reliability of the modeling approaches.
+
+Early stopping mechanisms were implemented in XGBoost training to prevent overfitting and optimize model complexity. The training process monitored both training and validation AUC scores, terminating when validation performance plateaued to ensure optimal generalization.
+
+Training times varied significantly across models, with Random Forest models generally requiring longer training periods due to the larger ensemble sizes (100 trees vs. optimized boosting rounds in XGBoost). The selected feature models demonstrated reduced computational requirements while maintaining reasonable performance levels, highlighting the trade-off between feature complexity and computational efficiency. 

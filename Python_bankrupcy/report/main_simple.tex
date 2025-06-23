@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{report}
+
+% Essential packages only
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+% Page setup
+\geometry{margin=1in}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=green,
+}
+
+% Title page information
+\title{
+    \Large \textbf{Ensemble Methods for Corporate Bankruptcy Prediction:} \\
+    \large A Comparative Analysis of Random Forest and XGBoost Models \\
+    \large Using Multi-Temporal Financial Data
+}
+
+\author{
+    \textbf{Advanced Analytics Research} \\
+    \textit{PhD Level Research Report}
+}
+
+\date{\today}
+
+\begin{document}
+
+% Title page
+\maketitle
+\thispagestyle{empty}
+
+% Table of contents
+\newpage
+\tableofcontents
+\newpage
+
+% Abstract
+\begin{abstract}
+This comprehensive study investigates the application of ensemble machine learning methods for corporate bankruptcy prediction using a multi-temporal financial dataset spanning five-year prediction horizons. The research develops and compares four distinct modeling approaches: Random Forest and XGBoost algorithms applied to both comprehensive and selected feature sets derived from 64 financial indicators across 43,405 company observations.
+
+The analysis encompasses rigorous exploratory data analysis, including systematic missing value treatment through K-Nearest Neighbors imputation, correlation-based feature selection using hierarchical clustering, and Variance Inflation Factor validation. Comprehensive hyperparameter optimization employing cross-validation techniques ensures robust model development and fair performance comparison.
+
+Results demonstrate the superior performance of XGBoost with full features, achieving an Area Under the Curve (AUC) of 0.91, significantly outperforming alternative approaches. The study reveals that comprehensive feature sets substantially outperform reduced feature sets, challenging conventional assumptions about feature selection necessity for tree-based ensemble methods. XGBoost consistently demonstrates superior minority class detection capabilities, achieving 36\% recall and 89\% precision for bankruptcy identification compared to Random Forest's limitations in class imbalance scenarios.
+
+The findings provide definitive guidance for practitioners implementing bankruptcy prediction systems, establishing XGBoost with comprehensive feature sets as the optimal approach for financial distress modeling. This research contributes valuable insights to the growing literature on ensemble methods in financial analytics and offers practical recommendations for financial institutions seeking robust bankruptcy prediction capabilities.
+
+\textbf{Keywords:} Bankruptcy prediction, ensemble methods, XGBoost, Random Forest, feature selection, financial analytics, machine learning, risk assessment
+\end{abstract}
+
+\newpage
+
+% Include all chapters
+\input{chapter1_introduction}
+\input{chapter2_eda}
+\input{chapter3_modeling}
+\input{chapter4_discussion}
+
+\end{document} 

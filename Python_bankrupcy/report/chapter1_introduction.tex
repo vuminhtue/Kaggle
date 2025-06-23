@@ -1,81 +1,25 @@
 \chapter{Introduction}
 
-\section{Background}
+Corporate bankruptcy prediction has emerged as a critical area of research in financial analytics, offering substantial value to stakeholders including investors, creditors, and policymakers. The ability to accurately predict bankruptcy enables informed decision-making, risk assessment, and proactive financial management strategies. This study leverages a comprehensive bankruptcy dataset spanning multiple time horizons to develop robust ensemble models for bankruptcy prediction.
 
-Bankruptcy prediction remains one of the most critical applications of machine learning in finance, enabling stakeholders to assess financial distress before it culminates in business failure. The ability to accurately predict corporate bankruptcy has profound implications for investors, creditors, auditors, and regulatory bodies, as it facilitates informed decision-making and risk management strategies.
+The dataset utilized in this research comprises bankruptcy information for companies across five different time periods (from 1 to 5-year horizons). Each temporal dataset contains 64 financial features that capture various aspects of company performance, including liquidity ratios, profitability metrics, leverage indicators, and operational efficiency measures. The complete dataset encompasses thousands of companies, providing a rich foundation for developing predictive models.
 
-This research leverages a comprehensive dataset comprising financial ratios and operational metrics across multiple time horizons (1 to 5 years) to develop robust predictive models for bankruptcy classification. The dataset incorporates 64 distinct financial features that capture various dimensions of corporate financial health, including liquidity, profitability, leverage, and operational efficiency measures.
+The financial features in the dataset represent key financial ratios and indicators commonly used in financial analysis and bankruptcy prediction. These include metrics such as working capital ratios, debt-to-equity ratios, return on assets, current ratios, and various profitability measures. The comprehensive nature of these features allows for a holistic assessment of company financial health across multiple dimensions.
 
-\section{Dataset Description}
-
-The bankruptcy prediction dataset consists of financial records collected over five distinct time periods, providing a longitudinal perspective on corporate financial distress. The data structure includes:
-
-\begin{itemize}
-    \item \textbf{Time Periods}: 1-year, 2-year, 3-year, 4-year, and 5-year datasets
-    \item \textbf{Features}: 64 financial ratios and metrics (X1 through X64)
-    \item \textbf{Target Variable}: Binary bankruptcy indicator (0 = Non-bankrupt, 1 = Bankrupt)
-    \item \textbf{Data Format}: Originally in ARFF (Attribute-Relation File Format)
-    \item \textbf{Missing Values}: Present in the dataset, requiring careful preprocessing
-\end{itemize}
-
-The financial features encompass a comprehensive range of ratios including:
-\begin{itemize}
-    \item Liquidity ratios (current assets to liabilities relationships)
-    \item Profitability metrics (return measures and margin calculations)
-    \item Leverage indicators (debt-to-equity and coverage ratios)
-    \item Operational efficiency measures (turnover and utilization ratios)
-    \item Market-based valuations and performance indicators
-\end{itemize}
-
-\section{Project Objectives}
-
-The primary objectives of this research are structured around developing a comprehensive bankruptcy prediction framework that addresses both methodological rigor and practical applicability:
-
-\subsection{Primary Research Goals}
+The primary objective of this research is to develop and compare ensemble machine learning models for bankruptcy prediction using the consolidated multi-year dataset. Specifically, this study aims to:
 
 \begin{enumerate}
-    \item \textbf{Data Integration and Preprocessing}: Consolidate multi-period datasets into a unified analytical framework while addressing missing value challenges through sophisticated imputation techniques.
-    
-    \item \textbf{Exploratory Data Analysis}: Conduct comprehensive statistical analysis to understand feature distributions, correlation structures, and temporal patterns in bankruptcy occurrences across different time horizons.
-    
-    \item \textbf{Feature Engineering and Selection}: Implement advanced correlation analysis and clustering techniques to identify optimal feature subsets that maximize predictive power while minimizing multicollinearity issues.
-    
-    \item \textbf{Model Development}: Deploy state-of-the-art ensemble learning algorithms, specifically Random Forest and XGBoost classifiers, with rigorous hyperparameter optimization through cross-validation procedures.
-    
-    \item \textbf{Performance Evaluation}: Establish robust model validation frameworks using multiple performance metrics to assess predictive accuracy, precision, recall, and area under the ROC curve.
+    \item Merge the five temporal datasets (1-year through 5-year horizons) into a unified dataset for comprehensive analysis
+    \item Conduct thorough exploratory data analysis to understand data characteristics, missing value patterns, and feature relationships
+    \item Implement data preprocessing techniques including missing value imputation and feature selection strategies
+    \item Develop and optimize two ensemble models: Random Forest and XGBoost classifiers
+    \item Evaluate model performance using both full feature sets and selected feature subsets
+    \item Compare model effectiveness through comprehensive evaluation metrics including ROC curves, AUC scores, and classification reports
+    \item Provide insights into the most predictive features and optimal modeling approaches for bankruptcy prediction
 \end{enumerate}
 
-\subsection{Methodological Contributions}
+The choice of ensemble methods, specifically Random Forest and XGBoost, is motivated by their proven effectiveness in handling complex financial data, their ability to capture non-linear relationships, and their robustness to overfitting. These tree-based ensemble methods are particularly well-suited for bankruptcy prediction tasks due to their capacity to handle mixed data types, identify important features, and provide interpretable results.
 
-This study aims to contribute to the bankruptcy prediction literature through several methodological innovations:
+This research contributes to the growing body of literature on bankruptcy prediction by providing a comprehensive comparison of ensemble methods across different feature selection strategies. The findings will offer practical insights for financial analysts and practitioners seeking to implement effective bankruptcy prediction systems in real-world applications.
 
-\begin{itemize}
-    \item Implementation of hierarchical clustering for feature selection based on correlation structures
-    \item Comparative analysis of feature-selected versus full-feature model performance
-    \item Cross-validation based hyperparameter optimization for ensemble methods
-    \item Temporal analysis of bankruptcy patterns across multiple prediction horizons
-\end{itemize}
-
-\subsection{Practical Implications}
-
-The research outcomes are designed to provide actionable insights for various stakeholders in the financial ecosystem:
-
-\begin{itemize}
-    \item \textbf{Financial Institutions}: Enhanced credit risk assessment capabilities for loan underwriting and portfolio management
-    \item \textbf{Investment Managers}: Improved due diligence processes for equity and debt investments
-    \item \textbf{Regulatory Bodies}: Advanced early warning systems for systemic risk monitoring
-    \item \textbf{Corporate Management}: Self-assessment tools for financial health evaluation and strategic planning
-\end{itemize}
-
-\section{Research Structure}
-
-This comprehensive analysis is organized into four distinct chapters, each addressing specific aspects of the bankruptcy prediction modeling process:
-
-\begin{itemize}
-    \item \textbf{Chapter 1}: Establishes the research foundation, dataset characteristics, and analytical objectives
-    \item \textbf{Chapter 2}: Presents detailed exploratory data analysis, including missing value patterns, feature correlations, and temporal bankruptcy trends
-    \item \textbf{Chapter 3}: Details the implementation of Random Forest and XGBoost models with comprehensive cross-validation and hyperparameter optimization
-    \item \textbf{Chapter 4}: Synthesizes findings, discusses model performance implications, and provides recommendations for practical implementation
-\end{itemize}
-
-The analytical framework employed in this research emphasizes reproducibility, statistical rigor, and practical applicability, ensuring that the developed models can serve as reliable tools for real-world bankruptcy prediction scenarios. 
+The subsequent chapters present detailed exploratory data analysis, methodology and modeling approaches, and comprehensive results with discussions on model performance and practical implications for bankruptcy prediction in financial decision-making contexts. 

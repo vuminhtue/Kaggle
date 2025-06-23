@@ -1,47 +1,41 @@
 \documentclass[12pt,a4paper]{report}
-
-% Packages
+% Essential packages
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
 \usepackage{float}
-\usepackage{hyperref}
-\usepackage{geometry}
-
-\usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 
-% Page setup
-\geometry{margin=1in}
+\title{\textbf{MSDS 7333: Case Study 4} \\ Ensemble Methods for Corporate Bankruptcy
+Prediction}
 
-% Hyperref setup
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    citecolor=black,
-    pdfborderstyle={/S/U/W 1}
-}
-
-% Document information
-\title{MSDS 7333 - Case Study 4: \\ A Comprehensive Analysis of Machine Learning Approaches for Bankruptcy Prediction}
 \author{Tue Vu}
 \date{\today}
 
 \begin{document}
-
-% Title page
 \maketitle
 
-% Main content
-\input{chapter1_introduction}
-\input{chapter2_eda}
-\input{chapter3_modeling}
-\input{chapter4_discussion}
+% Include each chapter
+\include{chapter1_introduction}
+\include{chapter2_eda}
+\include{chapter3_modeling}
+\include{chapter4_discussion}
 
 \end{document} 
